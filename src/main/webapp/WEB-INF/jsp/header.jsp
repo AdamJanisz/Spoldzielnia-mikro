@@ -97,9 +97,11 @@
     }
 
     #menuGorne #listaPoziomaHeader li .drugiPoziom li {
-        width: 90%;
+        width: 100%;
         text-align: left;
         font-size: 10px;
+        left:0%;
+        padding-left: 0;
         font-family: Verdana, sans-serif;
         margin-bottom: 5px;
         padding-bottom: 5px;
