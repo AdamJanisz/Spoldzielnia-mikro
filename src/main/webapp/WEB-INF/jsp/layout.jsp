@@ -25,7 +25,7 @@
         }
         #tresc
         {
-        background: red;
+            background: rgba(235, 235, 235, 0.8);
         background-repeat: repeat;
         position: absolute;
         height: 800px;
