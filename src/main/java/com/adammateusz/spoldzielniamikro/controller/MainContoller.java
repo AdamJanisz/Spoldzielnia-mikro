@@ -13,5 +13,10 @@ public class MainContoller {
         return "mainBody";
     }
 
+    @GetMapping("/body")
+    public String greeting() {
+        return "2body";
+    }
+
 
 }

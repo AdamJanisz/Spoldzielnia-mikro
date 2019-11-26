@@ -19,7 +19,6 @@
         height: 180px;
         width: 100%;
         top: 0;
-        background:blue;
         background-repeat: repeat-x;
         z-index: 50;
 
