@@ -6,19 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka" />
         <module name="spoldzielniamikro" />
+        <module name="zuul" />
+        <module name="eureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="eureka" target="1.8" />
       <module name="spoldzielniamikro" target="1.8" />
+      <module name="zuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eureka" options="-parameters" />
       <module name="spoldzielniamikro" options="-parameters" />
+      <module name="zuul" options="-parameters" />
     </option>
   </component>
 </project>
