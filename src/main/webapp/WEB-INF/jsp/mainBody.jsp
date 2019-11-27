@@ -245,7 +245,7 @@
             <div><b>Oferujemy:</b></div>
             <div class="myList" style="position: relative; width: 100%;">
             <ol style="width: 280px; left:7%; position: absolute; list-style: circle" >
-                <li>atrakcyjne wynagrodzenie</li>
+                <li>atrakcyjne wynagrodzeniee</li>
                 <li>wolne czwartki</li>
                 <li>kartę multisport</li>
             </ol>
