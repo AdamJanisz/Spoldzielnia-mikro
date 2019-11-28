@@ -16,15 +16,22 @@ public class AppUserServiceImpl implements AppUserService {
 
 
 	@Transactional
-	public void addAppUser(AppUser appUser) {
-
-		appUserRepository.save(appUser);
+	public AppUser createAppUser(AppUser appUser) {
+		 return appUserRepository.save(appUser);
 	}
 
 	@Transactional
-	public void editAppUser(AppUser appUser) {
-		//appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_USER"));
-        appUserRepository.save(appUser);
+	public void editAppUser(long id,AppUser appUser) {
+
+
+		AppUser user = appUserRepository.findById(id);
+		user.setFirstName(appUser.getFirstName());
+		user.setLastName(appUser.getLastName());
+		user.setEmail(appUser.getEmail());
+		user.setLogin(appUser.getLogin());
+		user.setPassword(appUser.getPassword());
+
+        appUserRepository.save(user);
 	}
 
 
@@ -35,8 +42,8 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 	@Transactional
-	public void removeAppUser(AppUser appUser) {
-        appUserRepository.delete(appUser);
+	public void removeAppUser(Long id) {
+        appUserRepository.deleteById(id);
 	}
 
 	@Transactional
