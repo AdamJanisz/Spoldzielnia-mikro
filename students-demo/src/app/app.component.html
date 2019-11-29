@@ -1,0 +1,22 @@
+<!-- Header - Często header stanowi osobny komponent
+Wykorzystano https://material.angular.io/components/toolbar/overview -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button [routerLink]="['/']">Strona główna</button>
+    <!-- [routerLink]="['/students']" - oznacza, że po naciśnięciu przycisku, aplikacja
+    przeniesie użytkownika na url /students, a co za tym idzie w miejsce <router-outlet>
+    zostanie podstawiony komponent Students. Zgodnie z deklaracją w app-routing.module.ts -->
+    <button mat-button [routerLink]="['/students']">Lista studentów</button>
+    <button mat-button [routerLink]="['/enrolment']">Dodaj studenta</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Dzięki router-outlet na podstawie deklaracji z app-routing.module.ts
+   podstawiane są komponenty -->
+<router-outlet></router-outlet>
+
+<!-- Footer - Często footer stanowi osobny komponent -->
+<footer>
+  <!-- Znak &nbsp; oznacza dla HTML spacje -->
+  &nbsp; Projekt ma na celu pokazanie podstawowych funkcjonalności Angulara.
+</footer>

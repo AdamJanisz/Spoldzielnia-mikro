@@ -10,28 +10,29 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("appUser")
 public class AppUserController {
 
     @Autowired
     private AppUserService appUserService;
 
-    @GetMapping("/appUser/list")
+    @GetMapping("/")
     public List<AppUser> getAppUsersLists() {
         return appUserService.listAppUser();
     }
-    @GetMapping("/appUser{id}")
+/*    @GetMapping("/{id}")
     public AppUser getAppUser(@RequestParam long id){
         return appUserService.getAppUser(id);
-    }
-    @PostMapping("/appUser")
+    }*/
+    @PostMapping("/")
     public AppUser createAppUser(@RequestBody AppUser appUser){
         return appUserService.createAppUser(appUser);
     }
-    @PutMapping("/appUser{id}")
+    @PutMapping("/")
     public void editAppUser(@RequestParam long id,@RequestBody AppUser appUser){
          appUserService.editAppUser(id,appUser);
     }
-    @DeleteMapping("/appUser{id}")
+    @DeleteMapping("/")
     public void deleteAppUser (@RequestParam Long id){
         appUserService.removeAppUser(id);
     }

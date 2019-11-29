@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 public class AppUser {
 
-    private boolean enabled;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -83,13 +82,6 @@ public class AppUser {
         this.id = id;
     }
 
-    public boolean isEnabled() {
-   return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
 
 //    public Address getAddress() {
 //        return address;
