@@ -1,15 +1,45 @@
 <!-- Header - Często header stanowi osobny komponent
 Wykorzystano https://material.angular.io/components/toolbar/overview -->
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-button [routerLink]="['/']">Strona główna</button>
-    <!-- [routerLink]="['/students']" - oznacza, że po naciśnięciu przycisku, aplikacja
-    przeniesie użytkownika na url /students, a co za tym idzie w miejsce <router-outlet>
-    zostanie podstawiony komponent Students. Zgodnie z deklaracją w app-routing.module.ts -->
-    <button mat-button [routerLink]="['/students']">Lista studentów</button>
-    <button mat-button [routerLink]="['/enrolment']">Dodaj studenta</button>
-  </mat-toolbar-row>
-</mat-toolbar>
+
+
+<div id="container">
+  <div id="naglowek">
+    <div id="kontakt">Masz pytania co do stanu lokali lub wysokości czynszu? Skontaktuj się z nami: xxx@email.pl tel.: XXX XXX XXX (pon-pt: 8:00
+      - 21:00)
+    </div>
+    <p class="uppercaseName">osiedle raj</p>
+    <div id="menuGorne">
+      <ul id="listaPoziomaHeader">
+        <li><a href="/enrolment"><span>Dodaj studenta</span></a>
+        <li><a href="/students"><span>lista studentow</span></a>
+
+        </li>
+        <li><a href="#"><span>Nasze lokale</span></a>
+          <ul class="drugiPoziom">
+            <li><a href="#">l1</a></li>
+            <li><a href="#">l2</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span>Administracja</span></a>
+          <ul class="drugiPoziom">
+            <li><a href="#">Elżbieta Bąk</a></li>
+            <li><a href="#">Janusz Matejko</a></li>
+            <li><a href="#">Adam Małysz</a></li>
+          </ul>
+
+        </li>
+        <li><a href="#"><span>Zarządzaj</span></a>
+          <ul class="drugiPoziom">
+            <li><a href="#">Lokale</a></li>
+            <li><a href="#">Mieszkańcy</a></li>
+            <li><a href="#">Rachunki</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div><!-- naglowek -->
 
 <!-- Dzięki router-outlet na podstawie deklaracji z app-routing.module.ts
    podstawiane są komponenty -->

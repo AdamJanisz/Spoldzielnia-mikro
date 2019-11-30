@@ -237,64 +237,7 @@
 <body onload='document.loginForm.username.focus();'>
 
 
-<div class="bg-img">
-    <div id="infoBox">
-        <h4 style="text-align: center">Ogłoszenia</h4>
-        <img width="296px" src="https://media.castorama.pl/media/catalog/product/cache/0/image/777x406/17f82f742ffe127f42dca9de82fb58b1/i/c/ico2_wbijanie_gwoxdzi.jpg">
-        <div style="font-size: 18px; padding: 5px"> Poszukiwana osoba na stanowisko konserwatora.
-            <div><b>Oferujemy:</b></div>
-            <div class="myList" style="position: relative; width: 100%;">
-            <ol style="width: 280px; left:7%; position: absolute; list-style: circle" >
-                <li>atrakcyjne wynagrodzeniee</li>
-                <li>wolne czwartki</li>
-                <li>kartę multisport</li>
-            </ol>
-            </div>
-            <div style="bottom: 5px; position: absolute">Kontakt: XXX-XXX-XXX</div>
-        </div>
-    </div>
-    <div class="content">
 
-
-
-        <div class="img-circular"><div class="content">
-
-            <div class="col_white">
-                <div id="login-box">
-
-                    <h3>Login with Username and Password</h3>
-
-                    <c:if test="${not empty error}">
-                        <div class="error">${error}</div>
-                    </c:if>
-                    <c:if test="${not empty msg}">
-                        <div class="msg">${msg}</div>
-                    </c:if>
-                </div>
-
-                <form name='loginForm' action="<c:url value='/login'/>" method='POST'>
-
-                    <table>
-                        <tr>
-                            <td>AppUser:</td>
-                            <td><input type='text'  name='login' value=''></td>
-                        </tr>
-                        <tr>
-                            <td>Password:</td>
-                            <td><input   type='password' name='password' /></td>
-                        </tr>
-                        <tr>
-                            <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
-                        </tr>
-                    </table>
-
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                </form>
-
-            </div>
-        </div>       </div>
-    </div>
-</div>
 
 </div>
 </body>
