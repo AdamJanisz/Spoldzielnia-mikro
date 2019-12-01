@@ -9,6 +9,5 @@ export interface Student {
   lastName?: string;
   email?: string;
   telephone?: string;
-  login?: string;
   password?: string;
 }

@@ -3,16 +3,18 @@ package com.adammateusz.spoldzielniamikro.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Table(name="appuser")
 @Entity
 public class AppUser {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+
 
 
     private String firstName;
@@ -20,6 +22,17 @@ public class AppUser {
     private String email;
     private String telephone;
 
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
+    private Set<Bill> billsList;
+
+
+    public Set<Bill> getBillsList() {
+        return billsList;
+    }
+
+    public void setBillsList(Set<Bill> billsList) {
+        this.billsList = billsList;
+    }
 
     @Column(unique = true)
     private String login;

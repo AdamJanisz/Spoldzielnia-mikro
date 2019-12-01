@@ -5,7 +5,11 @@
 export const environment = {
   production: false,
   // API_URL_STUDENTS: 'http://212.51.218.232:8000/api/students',
-   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/'}
+   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/',
+   API_URL_BILLS:    'http://localhost:8087/sm/appUser/bill/'
+
+
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

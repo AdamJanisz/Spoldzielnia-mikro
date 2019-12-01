@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import {AddBillComponent} from "./add-bill/add-bill.component";
+import {BillsComponent} from "./list-bill/bills.component";
 
 // Klasa w której deklaruję się komponenty i importuję się moduły.
 
@@ -20,7 +22,9 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     StudentsComponent,
     AddStudentComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddBillComponent,
+    BillsComponent
   ],
   imports: [
     CommonModule,
