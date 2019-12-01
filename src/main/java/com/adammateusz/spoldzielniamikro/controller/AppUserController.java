@@ -32,10 +32,11 @@ public class AppUserController {
     public void editAppUser(@RequestParam long id,@RequestBody AppUser appUser){
          appUserService.editAppUser(id,appUser);
     }
-    @DeleteMapping("/")
-    public void deleteAppUser (@RequestParam Long id){
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public void deleteAppUser (@RequestParam long id){
         appUserService.removeAppUser(id);
     }
+
 
 
 }

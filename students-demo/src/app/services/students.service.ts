@@ -27,7 +27,8 @@ export class StudentsService {
     return this.httpClient.get<Student[]>(this.API_URL_STUDENTS);
   }
   deleteStudent(id : number): Observable<Student[]> {
-     this.httpClient.delete(this.API_URL_STUDENTS+'/?id=1');
+     this.httpClient.delete(this.API_URL_STUDENTS+'?id='+id).subscribe(data=>{});
+    window.location.reload();
     return this.httpClient.get<Student[]>(this.API_URL_STUDENTS);
   }
 
