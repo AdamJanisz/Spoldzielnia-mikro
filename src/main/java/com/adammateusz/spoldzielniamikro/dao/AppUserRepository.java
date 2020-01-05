@@ -13,6 +13,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
     List<AppUser> findByLastName(String lastName);
     AppUser findById(long id);
-    AppUser findByLogin(String login);
+    AppUser findByUsername(String username);
 
 }

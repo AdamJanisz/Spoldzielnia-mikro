@@ -28,7 +28,7 @@ public class AppUserServiceImpl implements AppUserService {
 		user.setFirstName(appUser.getFirstName());
 		user.setLastName(appUser.getLastName());
 		user.setEmail(appUser.getEmail());
-		user.setLogin(appUser.getLogin());
+		user.setUsername(appUser.getUsername());
 		user.setPassword(appUser.getPassword());
 
         appUserRepository.save(user);
@@ -52,8 +52,8 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 	@Transactional
-	public AppUser findByLogin(String login) {
-		return appUserRepository.findByLogin(login);
+	public AppUser findByLogin(String username) {
+		return appUserRepository.findByUsername(username);
 	}
 
 

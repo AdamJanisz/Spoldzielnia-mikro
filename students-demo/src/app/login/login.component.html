@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-6 login-container">
+    <h2 style="margin: auto">Zaloguj się</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <table>
+        <tr>
+      <div class="form-group">
+        <td style="width: 160px">
+        <label for="username">Nazwa użytkownika:</label>
+        </td>
+        <td>
+        <input type="text" class="form-control" formControlName="username" id="username" autocomplete="off">
+        <div class="error" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">Nazwa użytkownika jest wymagana</div>
+        </td>
+      </div>
+
+        </tr>
+        <tr>
+      <div class="form-group">
+        <td style="width: 160px">
+        <label for="pwd">Hasło:</label>
+        </td>
+        <td>
+        <input type="password" class="form-control" formControlName="password" id="pwd" autocomplete="off">
+        <div class="error" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">Hasło jest wymagane</div>
+        </td>
+      </div>
+        </tr>
+        <tr>
+          <td colspan="2">
+      <button class="btn btn-success" style="width: 50%; height: 30px; margin-left: 165px; font-weight: bold" [disabled]="loginForm.invalid">Login</button>
+      <div *ngIf="invalidLogin" class="error">
+        <div>Niepoprawne dane logowania</div>
+      </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

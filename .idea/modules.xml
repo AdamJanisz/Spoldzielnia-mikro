@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/authServ/authServ.iml" filepath="$PROJECT_DIR$/authServ/authServ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/spoldzielniamikro.iml" filepath="$PROJECT_DIR$/spoldzielniamikro.iml" />
       <module fileurl="file://$PROJECT_DIR$/students-demo/students-demo.iml" filepath="$PROJECT_DIR$/students-demo/students-demo.iml" />

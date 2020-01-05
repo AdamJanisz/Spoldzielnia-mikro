@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class StudentsComponent implements OnInit {
 
   // Ustawianie nazw kolumn w tabeli
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'telephone', 'login', 'password', 'action'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'telephone', 'username', 'password', 'action'];
   dataSource;
 
   constructor(private studentService: StudentsService) { }

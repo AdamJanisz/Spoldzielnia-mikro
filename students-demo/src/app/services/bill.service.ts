@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Bill } from '../models/bill';
 import { environment } from '../../environments/environment';
-import {__param} from "tslib";
-import {Params} from "@angular/router";
+
 
 
 // Zastosowanie serwisów jest ogromne. W naszym przypadku
@@ -27,9 +26,8 @@ export class BillService {
   getBills(): Observable<Bill[]> {
     return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
   }
-  deleteBill(id : number): Observable<Bill[]> {
-    this.httpClient.delete(this.API_URL_BILLS+'?id='+id).subscribe(data=>{});
-    window.location.reload();
+  deleteBill(id: number): Observable<Bill[]> {
+    this.httpClient.delete(this.API_URL_BILLS + '?id=' + id).subscribe(data => {});
     return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
   }
 

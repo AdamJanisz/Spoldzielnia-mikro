@@ -14,7 +14,7 @@ export class AddStudentComponent implements OnInit {
     lastName: new FormControl(''),
     email: new FormControl('', Validators.email),
     telephone: new FormControl(''),
-    login: new FormControl(''),
+    username: new FormControl(''),
     password: new FormControl(''),
   });
 

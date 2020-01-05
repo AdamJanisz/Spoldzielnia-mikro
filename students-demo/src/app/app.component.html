@@ -10,11 +10,11 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
     <a href="/" style="color: black"><p class="uppercaseName">osiedle raj</p></a>
     <div id="menuGorne">
       <ul id="listaPoziomaHeader">
-        <li><a href="/enrolment"><span>Dodaj studenta</span></a> </li>
-        <li><a href="/students"><span>lista studentow</span></a> </li>
-        <li><a href="/addBill"><span>Dodaj rachunek</span></a> </li>
-        <li><a href="/allBills"><span>Lista rachunków</span></a>  </li>
-
+        <li><a [routerLink]="['/enrolment']"><span>Dodaj studenta</span></a> </li>
+        <li><a [routerLink]="['/login']"><span>Login</span></a> </li>
+        <li><a [routerLink]="['/students']"><span>lista studentow</span></a> </li>
+        <li><a [routerLink]="['/addBill']"><span>Dodaj rachunek</span></a> </li>
+        <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
 
         <li><a href="#"><span>Administracja</span></a>
           <ul class="drugiPoziom">
