@@ -17,6 +17,8 @@
     </div>
   </div>
   <div class="content">
-    <div *ngIf="!user">Witaj nieznajomy. Nie jesteś zalogowany</div>
+    <ng-container *ngIf="currentUser===null">
+    <div>Witaj nieznajomy. Nie jesteś zalogowany</div>
+    </ng-container>
   </div>
 </div>

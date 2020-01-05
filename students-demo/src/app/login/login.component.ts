@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ApiService} from '../core/api.service';
 import {HttpParams} from '@angular/common/http';
-import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -14,6 +13,7 @@ import {environment} from "../../environments/environment";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   invalidLogin = false;
+  currentUser: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) {
   }
@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit {
     this.apiService.login(body.toString()).subscribe(data => {
       window.sessionStorage.setItem('token', JSON.stringify(data));
       console.log(window.sessionStorage.getItem('token'));
+      localStorage.setItem('currentUser', body.get('username'));
+      document.getElementById('userLoginInfoName').innerText = 'Zalogowany jako:' + body.get('username');
+      document.getElementById('logoutInfo').innerText = 'Wyloguj';
       this.router.navigate(['successLogin']);
     }, error => {
       alert(error.error.error_description);
@@ -42,6 +45,12 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
     });
+
+    this.currentUser = this.readLocalStorageValue('currentUser');
+  }
+
+  readLocalStorageValue(key: string): string {
+    return localStorage.getItem(key);
   }
 
 

@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {User} from '../models/user.model';
 import {Observable} from 'rxjs/index';
 
 @Injectable()
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   baseUrl = 'http://localhost:9090/users/';
-
   login(loginPayload) {
     const headers = {
       Authorization: 'Basic ' + btoa('devglan-client:devglan-secret'),
