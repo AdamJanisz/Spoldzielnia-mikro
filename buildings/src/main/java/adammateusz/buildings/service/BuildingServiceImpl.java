@@ -34,6 +34,8 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Transactional
     public Building addBuilding(Building building) {
+        ownerRepository.saveAndFlush(building.getOwner());
+        //building.setOwner(building.getOwner());
         return buildingRepository.save(building);
     }
 

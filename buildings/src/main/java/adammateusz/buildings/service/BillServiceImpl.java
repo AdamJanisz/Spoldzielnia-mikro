@@ -27,8 +27,8 @@ public class BillServiceImpl implements BillService{
     }
 
     @Override
-    public List<Bill> listAppartmentBills(long appartmentId) {
-        return billRepository.findAllByAppartment_IdOrderByDate(appartmentId);
+    public List<Bill> listApartmentBills(long apartmentId) {
+        return billRepository.findAllByApartment_IdOrderByDate(apartmentId);
     }
 
     @Override
@@ -44,6 +44,7 @@ public class BillServiceImpl implements BillService{
         oldBill.setHotWater(bill.getHotWater());
         oldBill.setSewage(bill.getSewage());
         oldBill.setMaintenanceFund(bill.getMaintenanceFund());
+        oldBill.setTotalAmount();
         billRepository.save(oldBill);
 
     }

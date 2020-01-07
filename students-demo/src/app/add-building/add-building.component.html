@@ -1,0 +1,70 @@
+<div class="form-container">
+
+  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Miasto</mat-label>
+      <input matInput formControlName="city" required />
+      <!--  Jeśli warunki walidacji dla tego pola nie zostały spełnione, zostanie wyświetlony podany komunikat -->
+      <mat-error *ngIf="hasError('city')">Miasto jest obowiązkowe</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Ulica</mat-label>
+      <input matInput formControlName="street" required />
+      <mat-error *ngIf="hasError('street')">Ulica jest obowiązkowe</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Numer Budynku</mat-label>
+      <input matInput formControlName="buildingNumber" required />
+      <mat-error *ngIf="hasError('buildingNumber')">Numer wymagany</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Elektryczność</mat-label>
+      <input matInput formControlName="electricityPrice" required />
+      <mat-error *ngIf="hasError('electricityPrice')">wymagane</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+
+      <mat-label>Ciepła Woda</mat-label>
+      <input matInput formControlName="hotWaterPrice" required />
+      <mat-error *ngIf="hasError('hotWaterPrice')">wymagane</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Zimna Woda</mat-label>
+      <input matInput formControlName="coldWaterPrice" required />
+      <mat-error *ngIf="hasError('coldWaterPrice')">wymagane</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+    <mat-label>śmieci</mat-label>
+    <input matInput formControlName="sewagePrice" required />
+    <mat-error *ngIf="hasError('sewagePrice')">wymagane</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Fundusz Naprawczy</mat-label>
+      <input matInput formControlName="maintenanceFundPrice" required />
+      <mat-error *ngIf="hasError('maintenanceFundPrice')">wymagane</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Manager</mat-label>
+      <mat-select formControlName="owner">
+        <mat-option *ngFor="let student of students" [value]="student">
+          {{student.login}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <!-- Wywołanie metody onSubmit() z add-student.component.ts przy naciśnięciu przycisku
+    [disabled]="!newStudentForm.valid" - zablokowanie przycisku dopóki pola nie spełniają warunków walidacji  -->
+    <button mat-flat-button color="primary" type="submit" style="float: right;" [disabled]="!form.valid">
+      Dodaj budynek
+    </button>
+  </form>
+</div>

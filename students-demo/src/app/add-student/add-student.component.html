@@ -1,6 +1,6 @@
 <div class="form-container">
 
-  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="newStudentForm">
+  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="form">
     <mat-form-field class="example-full-width">
       <mat-label>Imie</mat-label>
       <input matInput formControlName="firstName" required />
@@ -32,16 +32,26 @@
       <input matInput formControlName="login" required />
       <mat-error *ngIf="hasError('login')">Login już zajęty</mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
 
+    <mat-form-field class="example-full-width">
       <mat-label>Hasło</mat-label>
       <input matInput type="password"  formControlName="password" required />
       <mat-error *ngIf="hasError('password')">Hasło wymagane</mat-error>
     </mat-form-field>
 
+    <mat-form-field>
+    <mat-label>Lokal</mat-label>
+      <mat-select formControlName="apartment">
+        <mat-option *ngFor="let apartment of apartments" [value]="apartment">
+        {{apartment.apartmentAddress.city}}   {{apartment.apartmentAddress.street}}   {{apartment.apartmentAddress.buildingNumber}} / {{apartment.apartmentNumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
   <!-- Wywołanie metody onSubmit() z add-student.component.ts przy naciśnięciu przycisku
   [disabled]="!newStudentForm.valid" - zablokowanie przycisku dopóki pola nie spełniają warunków walidacji  -->
-    <button mat-flat-button color="primary" type="submit" style="float: right;" [disabled]="!newStudentForm.valid">
+    <button mat-flat-button color="primary" type="submit" style="float: right;" [disabled]="!form.valid">
       Dodaj użytkownika
     </button>
   </form>

@@ -33,9 +33,9 @@ public class BuildingController {
             return buildingService.findById(id);
         }
         @PostMapping("/")
-        public Building createAppUser(@RequestBody Building building){ return buildingService.addBuilding(building); }
+        public Building createBuilding(@RequestBody Building building){ return buildingService.addBuilding(building); }
         @PutMapping("/")
-        public void editAppUser(@RequestBody Building building){
+        public void editBuilding(@RequestBody Building building){
             buildingService.editBuilding(building);
         }
         @RequestMapping(value = "/", method = RequestMethod.DELETE)

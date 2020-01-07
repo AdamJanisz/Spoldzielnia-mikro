@@ -56,10 +56,10 @@ export class AddBillComponent implements OnInit {
     }
     this.billService.updateBill(this.newBillForm.value).subscribe(
       data => {
-        this.toastr.success('Sukces!', 'Student dodany prawidłowo');
+        this.toastr.success('Sukces!', 'Rachunek edytowany prawidłowo');
       },
       error => {
-        this.toastr.error('Błąd!', 'Student niedodany prawidłowo');
+        this.toastr.error('Błąd!', 'Rachunek edytowany prawidłowo');
         console.log('Coś poszło nie tak !', error);
       }
     );

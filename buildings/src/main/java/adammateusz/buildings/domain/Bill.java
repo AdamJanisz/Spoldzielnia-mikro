@@ -19,7 +19,7 @@ public class Bill {
     private String date;
     @JsonIgnore
     @ManyToOne(optional = false)
-    private Appartment appartment;
+    private Apartment apartment;
 
 
 
@@ -65,13 +65,13 @@ public class Bill {
     public void setMaintenanceFund(int maintenanceFund) {
         this.maintenanceFund = maintenanceFund;
     }
-    public Appartment getAppartment() { return appartment; }
-    public void setAppartment(Appartment appartment) { this.appartment = appartment; }
+    public Apartment getApartment() { return apartment; }
+    public void setApartment(Apartment apartment) { this.apartment = apartment; }
     public int getTotalAmount() {
         return totalAmount;
     }
     public void setTotalAmount() {
-        Building building = this.appartment.getAppartmentAddress();
+        Building building = this.apartment.getApartmentAddress();
         this.totalAmount = this.hotWater*building.getHotWaterPrice()
                 +this.coldWater*building.getColdWaterPrice()
                 +this.sewage*building.getSewagePrice()

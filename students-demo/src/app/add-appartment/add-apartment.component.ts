@@ -2,43 +2,38 @@ import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {Building} from "../models/building";
-import {AppartmentService} from "../services/appartment.service";
+import {ApartmentService} from "../services/apartment.service";
 import {BuildingService} from "../services/building.service";
 import {MatTableDataSource} from "@angular/material";
 
 
 @Component({
   selector: 'app-add-apartment',
-  templateUrl: './add-appartment.component.html',
-  styleUrls: ['./add-appartment.component.scss']
+  templateUrl: './add-apartment.component.html',
+  styleUrls: ['./add-apartment.component.scss']
 })
 
-/*  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];*/
 
 
-export class AddAppartmentComponent implements OnInit {
+export class AddApartmentComponent implements OnInit {
 
-   // appartmentAddress: Building[] = [],
+
   form: FormGroup;
   buildings: Building[];
-  displayedColumns: string[] = ['city','street','buildingNumber','appartmentNumber'];
+  displayedColumns: string[] = ['city','street','buildingNumber','apartmentNumber'];
   dataSource;
 
   constructor(
     private fb: FormBuilder,
-    private appartmentService: AppartmentService,
+    private apartmentService: ApartmentService,
     private buildingService: BuildingService,
     private toastr: ToastrService
   ) {this.createForm();}
 
   createForm() {
     this.form = this.fb.group({
-      appartmentNumber: ['', Validators.required],
-      appartmentAddress: [this.buildings, Validators.required]
+      apartmentNumber: ['', Validators.required],
+      apartmentAddress: [this.buildings, Validators.required]
     });
 
   }
@@ -48,7 +43,7 @@ export class AddAppartmentComponent implements OnInit {
   this.buildings = response;
 });
 
-  this.appartmentService.getAppartments().subscribe(response =>{
+  this.apartmentService.getApartments().subscribe(response =>{
     this.dataSource = new MatTableDataSource(response);
   });
 
@@ -63,7 +58,7 @@ export class AddAppartmentComponent implements OnInit {
 
   onSubmit() {
 
-    this.appartmentService.saveAppartment(this.form.value).subscribe(
+    this.apartmentService.saveApartment(this.form.value).subscribe(
       data => {
         this.toastr.success('Sukces!', 'Lokal dodany prawidłowo');
       },

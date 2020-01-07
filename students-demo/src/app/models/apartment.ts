@@ -1,9 +1,9 @@
 import {Building} from "./building";
 import {Student} from "./student";
 
-export interface Appartment{
+export interface Apartment{
   id?: number;
-  appartmentNumber?: string;
-  appartmentAddress?: Building;
+  apartmentNumber?: string;
+  apartmentAddress?: Building;
 
 }

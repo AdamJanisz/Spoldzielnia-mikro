@@ -15,6 +15,7 @@ import {Params} from "@angular/router";
 export class StudentsService {
   // Pobieranie z environment zmiennej środowiskowej reprezentującej url do serwisu studentów za pośrednictwem gateway
   API_URL_STUDENTS = environment.API_URL_STUDENTS;
+  API_URL_APARTMENT = environment.API_URL_APARTMENTS;
 
   // W konstruktorze wstrzykiwany jest klient http
   constructor(private httpClient: HttpClient) { }
@@ -27,13 +28,16 @@ export class StudentsService {
     return this.httpClient.get<Student[]>(this.API_URL_STUDENTS);
   }
   deleteStudent(id : number): Observable<Student[]> {
-    this.httpClient.delete(this.API_URL_STUDENTS+'?id='+id).subscribe(data=>{});
+    this.httpClient.delete(this.API_URL_STUDENTS+id).subscribe(data=>{});
    return this.httpClient.get<Student[]>(this.API_URL_STUDENTS);
   }
 
   // Metoda wywołująca endpoint /api/students (POST)
   // Dodanie studenta w StudentService za pośrednictwem wywołania metody w Rest Api
   saveStudent(student: Student): Observable<Student> {
-    return this.httpClient.post(this.API_URL_STUDENTS, student);
+    var temp=this.httpClient.post(this.API_URL_STUDENTS, student);
+
+   //  this.httpClient.post(this.API_URL_APARTMENT+student.apartment.id+"/tenant/"+student.id,student.apartment);
+    return temp;
   }
 }

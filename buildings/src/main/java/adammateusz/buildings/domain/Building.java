@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Table(name="buildings")//,uniqueConstraints = {@UniqueConstraint(columnNames = { "city", "street","buildingNumber" } )})
@@ -29,8 +28,9 @@ public class Building {
     private int maintenanceFundPrice;
     @ManyToOne
     private Owner owner;
-   @OneToMany(cascade = CascadeType.ALL,mappedBy = "appartmentAddress")
-    private List<Appartment> appartmentList;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "apartmentAddress")
+    private List<Apartment> apartmentList;
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
@@ -52,6 +52,6 @@ public class Building {
     public void setMaintenanceFundPrice(int maintenanceFundPrice) { this.maintenanceFundPrice = maintenanceFundPrice; }
     public Owner getOwner() { return owner; }
     public void setOwner(Owner owner) { this.owner = owner; }
-    public List<Appartment> getAppartmentList() { return appartmentList; }
-    public void setAppartmentList(List<Appartment> appartmentList) { this.appartmentList = appartmentList; }
+    public List<Apartment> getApartmentList() { return apartmentList; }
+    public void setApartmentList(List<Apartment> apartmentList) { this.apartmentList = apartmentList; }
 }

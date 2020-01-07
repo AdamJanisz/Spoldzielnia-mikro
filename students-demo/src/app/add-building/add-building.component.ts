@@ -1,47 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {BuildingService} from "../services/building.service";
 import {StudentsService} from "../services/students.service";
-import {ApartmentService} from "../services/apartment.service";
-import {Apartment} from "../models/apartment";
+import {Student} from "../models/student";
 
 @Component({
-  selector: 'app-add-student',
-  templateUrl: './add-student.component.html',
-  styleUrls: ['./add-student.component.scss']
+  selector: 'app-add-building',
+  templateUrl: './add-building.component.html',
+  styleUrls: ['./add-building.component.scss']
 })
-export class AddStudentComponent implements OnInit {
+export class AddBuildingComponent implements OnInit {
 
   form: FormGroup;
-  apartments: Apartment[];
-
-
-
+  students: Student[];
 
   constructor(
+    private buildingService: BuildingService,
     private studentService: StudentsService,
     private toastr: ToastrService,
-    private apartmentService: ApartmentService,
     private fb: FormBuilder
   ) {
     this.createForm();
   }
   createForm() {
     this.form = this.fb.group({
-      firstName:  ['',Validators.required],
-      lastName:   ['',Validators.required],
-      email:      ['',Validators.email],
-      telephone:  ['',Validators.required],
-      login:      ['',Validators.required],
-      password:   ['',Validators.required],
-      apartment: [this.apartments, Validators.required],
+      city:  ['',Validators.required],
+      street:   ['',Validators.required],
+      buildingNumber:      ['',Validators.required],
+      electricityPrice:  ['',Validators.required],
+      hotWaterPrice:      ['',Validators.required],
+      coldWaterPrice:   ['',Validators.required],
+      sewagePrice: ['', Validators.required],
+      maintenanceFundPrice:   ['',Validators.required],
+      owner: [this.students, Validators.required],
     });
-
   }
 
   ngOnInit() {
-    this.apartmentService.getApartments().subscribe(response => {
-      this.apartments = response;
+    this.studentService.getStudents().subscribe(response => {
+      this.students = response;
     });
   }
 
@@ -53,25 +51,19 @@ export class AddStudentComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     }
-    this.studentService.saveStudent(this.form.value).subscribe(
+    this.buildingService.saveBuilding(this.form.value).subscribe(
       data => {
-        this.toastr.success('Sukces!', 'Student dodany prawidłowo');
+        this.toastr.success('Sukces!', 'Budynek dodany prawidłowo');
       },
       error => {
-        this.toastr.error('Błąd!', 'Student niedodany prawidłowo');
+        this.toastr.error('Błąd!', 'Budynek niedodany prawidłowo');
         console.log('Coś poszło nie tak !', error);
       }
     );
-
   }
 
   // Metoda do weryfikowania czy pole spełnia warunki walidacji
   hasError(controlName) {
     return this.form.get(controlName).hasError;
-  }
-
-  // Metoda potrzebna dla wykorzystania Validators.email
-  get email() {
-    return this.form.get('email');
   }
 }

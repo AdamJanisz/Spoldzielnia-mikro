@@ -14,6 +14,6 @@ import java.util.List;
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
     Bill findById(long id);
-    List<Bill> findAllByAppartment_IdOrderByDate(long id);
+    List<Bill> findAllByApartment_IdOrderByDate(long id);
 
 }

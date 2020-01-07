@@ -5,17 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
-@Table//(uniqueConstraints = {@UniqueConstraint(columnNames = { "appartmentNumber", "appartment_address_id" } )})
+@Table//(uniqueConstraints = {@UniqueConstraint(columnNames = { "apartmentNumber", "apartment_address_id" } )})
 @Entity
-public class Appartment {
+public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    private String appartmentNumber;
-    @JsonIgnore
+    private String apartmentNumber;
     @ManyToOne//(optional=false)
-    private Building appartmentAddress;
+    private Building apartmentAddress;
     @OneToOne(cascade = CascadeType.ALL)
     private Owner tenant;
     @OneToMany(cascade = CascadeType.ALL)
@@ -28,17 +27,17 @@ public class Appartment {
     public void setId(long id) {
         this.id = id;
     }
-    public String getAppartmentNumber() {
-        return appartmentNumber;
+    public String getApartmentNumber() {
+        return apartmentNumber;
     }
-    public void setAppartmentNumber(String appartmentNumber) {
-        this.appartmentNumber = appartmentNumber;
+    public void setApartmentNumber(String apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
     }
-    public Building getAppartmentAddress() {
-        return appartmentAddress;
+    public Building getApartmentAddress() {
+        return apartmentAddress;
     }
-    public void setAppartmentAddress(Building appartmentAddress) {
-        this.appartmentAddress = appartmentAddress;
+    public void setApartmentAddress(Building apartmentAddress) {
+        this.apartmentAddress = apartmentAddress;
     }
     public Owner getTenant() { return tenant; }
     public void setTenant(Owner tenant) { this.tenant = tenant; }

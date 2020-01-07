@@ -15,8 +15,9 @@ import { CommonModule } from '@angular/common';
 import {AddBillComponent} from "./add-bill/add-bill.component";
 import {BillsComponent} from "./list-bill/bills.component";
 import {BuildingsComponent} from "./building-list/buildings.component";
-import {AddAppartmentComponent} from "./add-appartment/add-appartment.component";
+import {AddApartmentComponent} from "./add-appartment/add-apartment.component";
 import {MatSelectModule} from "@angular/material";
+import {AddBuildingComponent} from "./add-building/add-building.component";
 
 // Klasa w której deklaruję się komponenty i importuję się moduły.
 
@@ -29,7 +30,8 @@ import {MatSelectModule} from "@angular/material";
     AddBillComponent,
     BillsComponent,
     BuildingsComponent,
-    AddAppartmentComponent
+    AddApartmentComponent,
+    AddBuildingComponent
   ],
   imports: [
     CommonModule,

@@ -7,7 +7,7 @@ import java.util.List;
 public interface BillService {
 
     public List<Bill> getAllBills();
-    public List<Bill> listAppartmentBills(long appartmentId);
+    public List<Bill> listApartmentBills(long apartmentId);
     public Bill addBill(Bill bill);
     public void editBill(Bill bills);
     public Bill getBill(long id);

@@ -7,9 +7,9 @@ export const environment = {
   // API_URL_STUDENTS: 'http://212.51.218.232:8000/api/students',
 
   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/',
-  API_URL_BILLS:    'http://localhost:8087/sm/appUser/bill/',
+  API_URL_BILLS:    'http://localhost:8087/sm/building/bill/',
   API_URL_BUILDINGS: 'http://localhost:8087/sm/building/',
-  API_URL_APPARTMENTS: 'http://localhost:8087/sm/building/appartment/'
+  API_URL_APARTMENTS: 'http://localhost:8087/sm/building/apartment/'
 
 
 }

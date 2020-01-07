@@ -1,6 +1,8 @@
 package com.adammateusz.spoldzielniamikro.service;
 
 import com.adammateusz.spoldzielniamikro.dao.AppUserRepository;
+import com.adammateusz.spoldzielniamikro.dao.ApartmentRepository;
+import com.adammateusz.spoldzielniamikro.domain.Apartment;
 import com.adammateusz.spoldzielniamikro.domain.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,14 @@ public class AppUserServiceImpl implements AppUserService {
 
 	@Autowired
 	AppUserRepository appUserRepository;
+	@Autowired
+	ApartmentRepository apartmentRepository;
 
 
 	@Transactional
 	public AppUser createAppUser(AppUser appUser) {
-		 return appUserRepository.save(appUser);
+		apartmentRepository.saveAndFlush(appUser.getApartment());
+		return appUserRepository.save(appUser);
 	}
 
 	@Transactional
@@ -30,6 +35,7 @@ public class AppUserServiceImpl implements AppUserService {
 		user.setEmail(appUser.getEmail());
 		user.setLogin(appUser.getLogin());
 		user.setPassword(appUser.getPassword());
+		user.setApartment(appUser.getApartment());
 
         appUserRepository.save(user);
 	}

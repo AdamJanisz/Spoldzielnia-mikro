@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BillService } from '../services/bill.service';
 import { MatTableDataSource } from '@angular/material/table';
 import {BuildingService} from "../services/building.service";
 

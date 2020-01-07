@@ -4,15 +4,15 @@
   <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="form">
     <mat-form-field class="example-full-width">
       <mat-label>Numer Mieszkania</mat-label>
-      <input matInput formControlName="appartmentNumber" required />
+      <input matInput formControlName="apartmentNumber" required />
       <!--  Jeśli warunki walidacji dla tego pola nie zostały spełnione, zostanie wyświetlony podany komunikat -->
-      <mat-error *ngIf="hasError('appartmentNumber')">Podaj numer mieszkania</mat-error>
+      <mat-error *ngIf="hasError('apartmentNumber')">Podaj numer mieszkania</mat-error>
     </mat-form-field>
 
 
     <mat-form-field>
       <mat-label>Budynek</mat-label>
-      <mat-select formControlName="appartmentAddress">
+      <mat-select formControlName="apartmentAddress">
         <mat-option *ngFor="let building of buildings" [value]="building">
           {{building.city}}   {{building.street}}   {{building.buildingNumber}}
         </mat-option>
@@ -22,7 +22,7 @@
     <!-- Wywołanie metody onSubmit() z add-student.component.ts przy naciśnięciu przycisku
     [disabled]="!newStudentForm.valid" - zablokowanie przycisku dopóki pola nie spełniają warunków walidacji  -->
     <button mat-flat-button color="primary" type="submit" style="float: right;" [disabled]="!form.valid">
-      Dodaj appartament
+      Dodaj lokal
     </button>
   </form>
 </div>

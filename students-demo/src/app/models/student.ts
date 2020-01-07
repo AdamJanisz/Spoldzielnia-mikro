@@ -3,6 +3,8 @@
 // Zwróć uwagę, że w Angular deklarujemy zmienne odwrotnie jak w Java.  String firstName = firstName: String.
 // Znak zapytania oznacza, że pole jest nieobowiązkowe.
 
+import {Apartment} from "./apartment";
+
 export interface Student {
   id?: number;
   firstName?: string;
@@ -11,4 +13,5 @@ export interface Student {
   telephone?: string;
   login?: string;
   password?: string;
+  apartment?: Apartment;
 }
