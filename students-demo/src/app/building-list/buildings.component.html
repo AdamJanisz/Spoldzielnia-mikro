@@ -1,0 +1,71 @@
+<div class="container">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtruj" />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let building">{{building.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>Miasto</th>
+      <td mat-cell *matCellDef="let building">{{ building.city }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef>Ulica</th>
+      <td mat-cell *matCellDef="let building">{{ building.street }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="buildingNumber">
+      <th mat-header-cell *matHeaderCellDef>Numer</th>
+      <td mat-cell *matCellDef="let building">{{ building.buildingNumber}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="electricityPrice">
+      <th mat-header-cell *matHeaderCellDef>Elektryczność</th>
+      <td mat-cell *matCellDef="let building">{{ building.electricityPrice }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hotWaterPrice">
+      <th mat-header-cell *matHeaderCellDef>Ciepła woda</th>
+      <td mat-cell *matCellDef="let building">{{ building.hotWaterPrice }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="coldWaterPrice">
+      <th mat-header-cell *matHeaderCellDef>Zimna woda</th>
+      <td mat-cell *matCellDef="let building">{{ building.coldWaterPrice}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sewagePrice">
+      <th mat-header-cell *matHeaderCellDef>Ścienki</th>
+      <td mat-cell *matCellDef="let building">{{ building.sewagePrice }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="maintenanceFundPrice">
+      <th mat-header-cell *matHeaderCellDef>Fundusz naprawczy</th>
+      <td mat-cell *matCellDef="let building">{{ building.maintenanceFundPrice }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef>Manager</th>
+      <td mat-cell *matCellDef="let building">{{ building.owner.login}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell  *matHeaderCellDef >Akcja</mat-header-cell>
+      <mat-cell *matCellDef="let building" >
+        <button mat-button type="" (click)=" buildingService.editBuilding(building.id)" >Edytuj</button>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

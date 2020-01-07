@@ -1,0 +1,46 @@
+<!-- Header - Często header stanowi osobny komponent
+Wykorzystano https://material.angular.io/components/toolbar/overview -->
+
+
+<div id="container">
+  <div id="naglowek">
+    <div id="kontakt">Masz pytania co do stanu lokali lub wysokości czynszu? Skontaktuj się z nami: xxx@email.pl tel.: XXX XXX XXX (pon-pt: 8:00
+      - 21:00)
+    </div>
+    <a [routerLink]="['/']" style="color: black"><p class="uppercaseName">osiedle raj</p></a>
+    <div id="menuGorne">
+      <ul id="listaPoziomaHeader">
+        <li><a [routerLink]="['/enrolment']"><span>Dodaj studenta</span></a> </li>
+        <li><a [routerLink]="['/students']"><span>lista studentow</span></a> </li>
+        <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
+
+
+        <li><a href="#"><span>Administracja</span></a>
+          <ul class="drugiPoziom">
+            <li><a href="#">Elżbieta Bąk</a></li>
+            <li><a href="#">Janusz Matejko</a></li>
+            <li><a href="#">Adam Małysz</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span>Zarządzaj</span></a>
+          <ul class="drugiPoziom">
+            <li><a href="#">Lokale</a></li>
+            <li><a href="#">Mieszkańcy</a></li>
+            <li><a href="#">Rachunki</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div><!-- naglowek -->
+
+<!-- Dzięki router-outlet na podstawie deklaracji z app-routing.module.ts
+   podstawiane są komponenty -->
+<router-outlet></router-outlet>
+
+<!-- Footer - Często footer stanowi osobny komponent -->
+<footer>
+  <!-- Znak &nbsp; oznacza dla HTML spacje -->
+  &nbsp; Projekt ma na celu pokazanie podstawowych funkcjonalności Angulara.
+</footer>

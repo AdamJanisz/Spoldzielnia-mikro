@@ -7,19 +7,15 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
     <div id="kontakt">Masz pytania co do stanu lokali lub wysokości czynszu? Skontaktuj się z nami: xxx@email.pl tel.: XXX XXX XXX (pon-pt: 8:00
       - 21:00)
     </div>
-    <a href="/" style="color: black"><p class="uppercaseName">osiedle raj</p></a>
+    <a [routerLink]="['/']" style="color: black"><p class="uppercaseName">osiedle raj</p></a>
     <div id="menuGorne">
       <ul id="listaPoziomaHeader">
-        <li><a href="/enrolment"><span>Dodaj studenta</span></a>
-        <li><a href="/students"><span>lista studentow</span></a>
+        <li><a [routerLink]="['/enrolment']"><span>Dodaj studenta</span></a> </li>
+        <li><a [routerLink]="['/students']"><span>lista studentow</span></a> </li>
+        <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
+        <li><a [routerLink]="['/allBuildings']"><span>Lista budynków</span></a>  </li>
+        <li><a [routerLink]="['/addAppartment']"><span>Dodaj lokal</span></a>  </li>
 
-        </li>
-        <li><a href="#"><span>Nasze lokale</span></a>
-          <ul class="drugiPoziom">
-            <li><a href="#">l1</a></li>
-            <li><a href="#">l2</a></li>
-          </ul>
-        </li>
         <li><a href="#"><span>Administracja</span></a>
           <ul class="drugiPoziom">
             <li><a href="#">Elżbieta Bąk</a></li>

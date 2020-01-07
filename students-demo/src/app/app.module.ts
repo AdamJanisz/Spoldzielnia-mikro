@@ -12,6 +12,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import {AddBillComponent} from "./add-bill/add-bill.component";
+import {BillsComponent} from "./list-bill/bills.component";
+import {BuildingsComponent} from "./building-list/buildings.component";
+import {AddAppartmentComponent} from "./add-appartment/add-appartment.component";
+import {MatSelectModule} from "@angular/material";
 
 // Klasa w której deklaruję się komponenty i importuję się moduły.
 
@@ -20,7 +25,11 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     StudentsComponent,
     AddStudentComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddBillComponent,
+    BillsComponent,
+    BuildingsComponent,
+    AddAppartmentComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +40,8 @@ import { CommonModule } from '@angular/common';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

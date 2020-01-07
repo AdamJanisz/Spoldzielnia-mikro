@@ -1,0 +1,61 @@
+
+<div class="form-container">
+
+  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Numer Mieszkania</mat-label>
+      <input matInput formControlName="appartmentNumber" required />
+      <!--  Jeśli warunki walidacji dla tego pola nie zostały spełnione, zostanie wyświetlony podany komunikat -->
+      <mat-error *ngIf="hasError('appartmentNumber')">Podaj numer mieszkania</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Budynek</mat-label>
+      <mat-select formControlName="appartmentAddress">
+        <mat-option *ngFor="let building of buildings" [value]="building">
+          {{building.city}}   {{building.street}}   {{building.buildingNumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Wywołanie metody onSubmit() z add-student.component.ts przy naciśnięciu przycisku
+    [disabled]="!newStudentForm.valid" - zablokowanie przycisku dopóki pola nie spełniają warunków walidacji  -->
+    <button mat-flat-button color="primary" type="submit" style="float: right;" [disabled]="!form.valid">
+      Dodaj appartament
+    </button>
+  </form>
+</div>
+<!--<div class="container">
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtruj" />
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef>Miasto</th>
+    <td mat-cell *matCellDef="let appartment">{{ appartment.building.city }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="street">
+    <th mat-header-cell *matHeaderCellDef>Ulica</th>
+    <td mat-cell *matCellDef="let appartment">{{ appartment.building.street }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="buildingNumber">
+    <th mat-header-cell *matHeaderCellDef>Numer</th>
+    <td mat-cell *matCellDef="let appartment">{{ appartment.building.buildingNumber}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="appartmentNumber">
+    <th mat-header-cell *matHeaderCellDef>Elektryczność</th>
+    <td mat-cell *matCellDef="let appartment">{{ appartment.appartmentNumber }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+</div>-->
+

@@ -1,0 +1,48 @@
+<div class="form-container">
+
+  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="newStudentForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Imie</mat-label>
+      <input matInput formControlName="firstName" required />
+      <!--  Jeśli warunki walidacji dla tego pola nie zostały spełnione, zostanie wyświetlony podany komunikat -->
+      <mat-error *ngIf="hasError('firstName')">Imie jest obowiązkowe</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nazwisko</mat-label>
+      <input matInput formControlName="lastName" required />
+      <mat-error *ngIf="hasError('lastName')">Nazwisko jest obowiązkowe</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-error *ngIf="hasError('email')">Zły format email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Telefon</mat-label>
+      <input matInput formControlName="telephone" required />
+      <mat-error *ngIf="hasError('telephone')">Zły format email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+
+      <mat-label>Login</mat-label>
+      <input matInput formControlName="login" required />
+      <mat-error *ngIf="hasError('login')">Login już zajęty</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+
+      <mat-label>Hasło</mat-label>
+      <input matInput type="password"  formControlName="password" required />
+      <mat-error *ngIf="hasError('password')">Hasło wymagane</mat-error>
+    </mat-form-field>
+
+  <!-- Wywołanie metody onSubmit() z add-student.component.ts przy naciśnięciu przycisku
+  [disabled]="!newStudentForm.valid" - zablokowanie przycisku dopóki pola nie spełniają warunków walidacji  -->
+    <button mat-flat-button color="primary" type="submit" style="float: right;" [disabled]="!newStudentForm.valid">
+      Dodaj użytkownika
+    </button>
+  </form>
+</div>

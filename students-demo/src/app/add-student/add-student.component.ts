@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { StudentsService } from '../services/students.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {StudentsService} from "../services/students.service";
 
 @Component({
   selector: 'app-add-student',
@@ -23,7 +23,9 @@ export class AddStudentComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   // Metoda do zapisywania Studenta. Jeśli pola spełniaja warunki walidacji zostanie wywołana metoda z studentService zapisująca studenta.
   // Komponent Toastr jest odpowiedzialny za wyświetlenie aletru informującego o przebiegu zleconej operacji

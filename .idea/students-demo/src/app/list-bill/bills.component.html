@@ -1,0 +1,61 @@
+<div class="container">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtruj" />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Data</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="electricity">
+      <th mat-header-cell *matHeaderCellDef>Elektryczność</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.electricity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hotWater">
+      <th mat-header-cell *matHeaderCellDef>Ciepła woda</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.hotWater }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="coldWater">
+      <th mat-header-cell *matHeaderCellDef>Zimna woda</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.coldWater}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sewage">
+      <th mat-header-cell *matHeaderCellDef>Ścienki</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.sewage }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="maintenanceFund">
+      <th mat-header-cell *matHeaderCellDef>Fundusz naprawczy</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.maintenanceFund }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalAmount">
+    <th mat-header-cell *matHeaderCellDef>Suma</th>
+    <td mat-cell *matCellDef="let bill">{{ bill.totalAmount }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell  *matHeaderCellDef >Akcja</mat-header-cell>
+      <mat-cell *matCellDef="let bill" >
+        <button mat-button type="" (click)=" billService.editBill(bill.id)" >Edytuj</button>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

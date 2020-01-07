@@ -20,10 +20,10 @@ public class AppUserController {
     public List<AppUser> getAppUsersLists() {
         return appUserService.listAppUser();
     }
-/*    @GetMapping("/{id}")
-    public AppUser getAppUser(@RequestParam long id){
+    @GetMapping("/{id}")
+    public AppUser getAppUser(@PathVariable long id){
         return appUserService.getAppUser(id);
-    }*/
+    }
     @PostMapping("/")
     public AppUser createAppUser(@RequestBody AppUser appUser){
         return appUserService.createAppUser(appUser);
