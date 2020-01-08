@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BillService } from '../services/bill.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {ApiService} from '../core/api.service';
+import {ApiService} from "../core/api.service";
 
 @Component({
   selector: 'app-add-bill',
@@ -20,7 +20,6 @@ export class AddBillComponent implements OnInit {
   });
 
   constructor(
-    private apiService: ApiService,
     private billService: BillService,
     private toastr: ToastrService
   ) {}

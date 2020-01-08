@@ -3,6 +3,8 @@ package com.adammateusz.spoldzielniamikro.controller;
 import com.adammateusz.spoldzielniamikro.domain.Bill;
 import com.adammateusz.spoldzielniamikro.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +20,13 @@ public class BillController {
         return billService.getAllBills();
     }
     @PostMapping("/")
-    public Bill createNewBill(@RequestBody Bill bill){
+    public Bill createNewBill(@RequestBody Bill bill)
+
+    {
+        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String currentUsername= ((UserDetails)principal).getUsername();
+        System.out.println("TUTUTUAUTAT");
+        System.out.println(currentUsername);
         return billService.addBill(bill);
     }
     @PutMapping("/")
