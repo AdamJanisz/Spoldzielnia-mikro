@@ -23,10 +23,10 @@ public class BillController {
     public Bill createNewBill(@RequestBody Bill bill)
 
     {
-        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String currentUsername= ((UserDetails)principal).getUsername();
-        System.out.println("TUTUTUAUTAT");
-        System.out.println(currentUsername);
+//        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String currentUsername= ((UserDetails)principal).getUsername();
+//        System.out.println("TUTUTUAUTAT");
+//        System.out.println(currentUsername);
         return billService.addBill(bill);
     }
     @PutMapping("/")

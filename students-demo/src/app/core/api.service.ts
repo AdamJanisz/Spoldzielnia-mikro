@@ -8,33 +8,33 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:9090/users/';
+  baseUrl = 'http://localhost:8087/sm/';
 
   login(loginPayload) {
     const headers = {
-      Authorization: 'Basic ' + btoa('devglan-client:devglan-secret'),
+      Authorization: 'Basic ' + btoa('poli:poli1'),
       'Content-type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post('http://localhost:9090/' + 'oauth/token', loginPayload, {headers});
+    return this.http.post('http://localhost:8080/' + 'oauth/token', loginPayload, {headers});
   }
 
   getUsers() {
-    return this.http.get(this.baseUrl + 'user?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
+    return this.http.get(this.baseUrl + 'appUser?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
   }
 
   getUserById(id: number) {
-    return this.http.get(this.baseUrl + 'user/' + id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
+    return this.http.get(this.baseUrl + 'appUser/' + id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
   }
 
   createUser(user: User) {
-    return this.http.post(this.baseUrl + 'user?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, user);
+    return this.http.post(this.baseUrl + 'appUser?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, user);
   }
 
   updateUser(user: User) {
-    return this.http.put(this.baseUrl + 'user/' + user.id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, user);
+    return this.http.put(this.baseUrl + 'appUser/' + user.id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, user);
   }
 
   deleteUser(id: number) {
-    return this.http.delete(this.baseUrl + 'user/' + id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
+    return this.http.delete(this.baseUrl + 'appUser/' + id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
   }
 }

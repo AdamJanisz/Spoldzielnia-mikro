@@ -37,6 +37,7 @@ export class StudentsService {
   // Metoda wywołująca endpoint /api/students (POST)
   // Dodanie studenta w StudentService za pośrednictwem wywołania metody w Rest Api
   saveStudent(student: Student): Observable<Student> {
-    return this.httpClient.post(this.API_URL_STUDENTS, student);
+    console.log('token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
+    return this.httpClient.post(this.API_URL_STUDENTS + 'user?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, student);
   }
 }

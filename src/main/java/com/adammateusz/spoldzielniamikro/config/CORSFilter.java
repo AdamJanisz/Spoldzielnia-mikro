@@ -1,4 +1,4 @@
-package com.adammateusz.zuul;
+package com.adammateusz.spoldzielniamikro.config;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -11,9 +11,9 @@ import java.io.IOException;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CorsFilterr implements Filter {
+public class CORSFilter implements Filter {
 
-    public CorsFilterr() {
+    public CORSFilter() {
     }
 
     @Override

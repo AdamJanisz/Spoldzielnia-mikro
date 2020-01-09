@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 
@@ -21,6 +22,7 @@ public class AppUserController {
     private AppUserService appUserService;
 
     @GetMapping("/")
+   // @RolesAllowed({"ROLE_ADMIN"})
     public List<AppUser> getAppUsersLists() {
         return appUserService.listAppUser();
     }
