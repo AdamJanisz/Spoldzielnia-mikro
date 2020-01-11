@@ -16,13 +16,13 @@ import java.util.List;
 @RequestMapping("appUser")
 public class AppUserController {
 
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     private AppUserService appUserService;
 
+
     @GetMapping("/")
-   // @RolesAllowed({"ROLE_ADMIN"})
+   @RolesAllowed({"ROLE_ADMIN"})
     public List<AppUser> getAppUsersLists() {
         return appUserService.listAppUser();
     }
@@ -30,16 +30,13 @@ public class AppUserController {
     public AppUser getAppUser(@RequestParam long id){
         return appUserService.getAppUser(id);
     }*/
-    @PostMapping("/")
-    public AppUser createAppUser(@RequestBody AppUser appUser)
-    {
-     appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
-        return appUserService.createAppUser(appUser);
-    }
+
+    @CrossOrigin
     @PutMapping("/")
     public void editAppUser(@RequestParam long id,@RequestBody AppUser appUser){
          appUserService.editAppUser(id,appUser);
     }
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.DELETE)
     public void deleteAppUser (@RequestParam long id){
         appUserService.removeAppUser(id);

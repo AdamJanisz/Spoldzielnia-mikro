@@ -1,4 +1,4 @@
-package com.adammateusz.spoldzielniamikro.config;
+package com.adammateusz.zuul;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -9,13 +9,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true,jsr250Enabled = true)
-public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+public class ResourceServ extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception
     {
-        http.antMatcher("/appUser/**").authorizeRequests().
-                antMatchers("/register").permitAll().//dodanie publicznego endpointu bez autoryzacji
-                anyRequest().authenticated();
+        http.authorizeRequests()
+                .antMatchers("/sm/appUser/**","/oauth/check_token/**").permitAll();
     }
 }
+

@@ -45,7 +45,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret(passwordEncoder().encode("poli1"))//new line
                 .authorizedGrantTypes("password")
                 .autoApprove(true)
-                .scopes("read","write");
+                .scopes("read","write","openid");
     }
     @Bean
     public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder();}
@@ -58,6 +58,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer ouath2)
     {
-        ouath2.checkTokenAccess("isAuthenticated()");
+        ouath2.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
     }
 }

@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   // API_URL_STUDENTS: 'http://212.51.218.232:8000/api/students',
-   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/',
-   API_URL_BILLS:    'http://localhost:8087/sm/appUser/bill/',
+   API_URL_STUDENTS: 'http://localhost:8080/appUser/',
+  API_URL_REGISTER: 'http://localhost:8080/register',
+   API_URL_BILLS:    'http://localhost:8080/appUser/bill/',
   isUser: false
 
 

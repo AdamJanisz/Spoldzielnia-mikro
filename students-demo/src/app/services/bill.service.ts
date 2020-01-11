@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Bill } from '../models/bill';
-import { environment } from '../../environments/environment';
-
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Bill} from '../models/bill';
+import {environment} from '../../environments/environment';
 
 
 // Zastosowanie serwisów jest ogromne. W naszym przypadku
@@ -17,22 +16,37 @@ export class BillService {
   API_URL_BILLS = environment.API_URL_BILLS;
 
   // W konstruktorze wstrzykiwany jest klient http
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
 
   // Metoda pobierająca liste studentów z studentService za pomocą endpointa /api/students (GET)
   // Observable<Student[]> - To strumień który nasłuchuje na tablice studentów
   // Za pomocą httpClient odpytywany jest StudentService
   getBills(): Observable<Bill[]> {
-    return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS, {headers: reqHeader});
   }
+
   deleteBill(id: number): Observable<Bill[]> {
-    this.httpClient.delete(this.API_URL_BILLS + '?id=' + id).subscribe(data => {});
-    return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    this.httpClient.delete(this.API_URL_BILLS + '?id=' + id, {headers: reqHeader}).subscribe(data => {
+    });
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS, {headers: reqHeader});
   }
 
   saveBill(bill: Bill): Observable<Bill> {
-    return this.httpClient.post(this.API_URL_BILLS, bill);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.post(this.API_URL_BILLS, bill, {headers: reqHeader});
   }
 
   // Metoda wywołująca endpoint /api/students (POST)

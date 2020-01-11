@@ -15,6 +15,7 @@ public class BillController {
     @Autowired
     private BillService billService;
 
+    @CrossOrigin
     @GetMapping("/")
     public List<Bill> getAppUsersLists() {
         return billService.getAllBills();

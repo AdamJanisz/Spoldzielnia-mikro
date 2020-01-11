@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 
 @Component({
@@ -7,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  constructor(private http: HttpClient) { }
 
   title = 'students-demo';
   myFunc(){
@@ -15,6 +16,12 @@ export class AppComponent {
     document.getElementById('userLoginInfoName').innerText = '';
     document.getElementById('logoutInfo').innerText = '';
 
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    window.sessionStorage.removeItem('token');
+    return this.http.post('http://localhost:8080/logout/', {headers: reqHeader});
   }
 }
 

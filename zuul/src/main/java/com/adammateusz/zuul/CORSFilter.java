@@ -10,7 +10,7 @@
 //import java.io.IOException;
 //
 //@Component
-//@Order(Ordered.HIGHEST_PRECEDENCE)
+//@Order(100)
 //public class CORSFilter implements Filter {
 //
 //    public CORSFilter() {
