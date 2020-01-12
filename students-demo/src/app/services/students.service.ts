@@ -20,6 +20,9 @@ export class StudentsService {
   // W konstruktorze wstrzykiwany jest klient http
   constructor(private httpClient: HttpClient) {
   }
+ 
+
+
 
   // Metoda pobierająca liste studentów z studentService za pomocą endpointa /api/students (GET)
   // Observable<Student[]> - To strumień który nasłuchuje na tablice studentów
@@ -50,4 +53,6 @@ export class StudentsService {
 
     return this.httpClient.post(this.API_URL_REGISTER , student);
   }
+
+
 }

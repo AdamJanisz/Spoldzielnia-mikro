@@ -36,6 +36,17 @@ public class AppUser {
 
     private String password;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
+
+    public Set<AppUserRole> getAppUserRole() {
+        return appUserRole;
+    }
+
+    public void setAppUserRole(Set<AppUserRole> appUserRole) {
+        this.appUserRole = appUserRole;
+    }
+
     public String getUsername() {
         return username;
     }
