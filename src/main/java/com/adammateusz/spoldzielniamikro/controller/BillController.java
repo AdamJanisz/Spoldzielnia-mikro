@@ -1,12 +1,15 @@
 package com.adammateusz.spoldzielniamikro.controller;
 
+import com.adammateusz.spoldzielniamikro.domain.AppUser;
 import com.adammateusz.spoldzielniamikro.domain.Bill;
+import com.adammateusz.spoldzielniamikro.service.AppUserService;
 import com.adammateusz.spoldzielniamikro.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -15,6 +18,9 @@ public class BillController {
     @Autowired
     private BillService billService;
 
+    @Autowired
+    AppUserService appUserService;
+
     @CrossOrigin
     @GetMapping("/")
     public List<Bill> getAppUsersLists() {
@@ -22,12 +28,9 @@ public class BillController {
     }
     @PostMapping("/")
     public Bill createNewBill(@RequestBody Bill bill)
-
     {
-//        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String currentUsername= ((UserDetails)principal).getUsername();
-//        System.out.println("TUTUTUAUTAT");
-//        System.out.println(currentUsername);
+        AppUser appUser = appUserService.findLoggedAppUser();
+        bill.setAppUser(appUser);
         return billService.addBill(bill);
     }
     @PutMapping("/")

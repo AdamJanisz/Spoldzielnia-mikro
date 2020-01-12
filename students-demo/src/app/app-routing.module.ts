@@ -6,7 +6,6 @@ import { BillsComponent } from './list-bill/bills.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AddBillComponent} from './add-bill/add-bill.component';
 import {LoginComponent} from './login/login.component';
-import {SuccessLoginComponent} from './loginViews/successLogin.component';
 
 // Delkaracja na jakim url ma się wyrenderować jaki komponent. Pojawi się w miejscu deklaracji <router-outlet>
 const routes: Routes = [
@@ -15,11 +14,7 @@ const routes: Routes = [
   { path: 'enrolment', component: AddStudentComponent },
   { path: 'addBill', component: AddBillComponent},
   { path: 'allBills', component: BillsComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'successLogin', component: SuccessLoginComponent}
-
-
-
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

@@ -68,9 +68,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //http.cors();
-
-
-
         http.addFilterAfter(new OAuth2ClientContextFilter(), AbstractPreAuthenticatedProcessingFilter.class).authorizeRequests();
 
                 http.formLogin().loginPage("/login").permitAll().and().logout() .logoutUrl("/logout")

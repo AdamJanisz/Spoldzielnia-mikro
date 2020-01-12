@@ -1,6 +1,8 @@
 package com.adammateusz.spoldzielniamikro.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
@@ -20,6 +22,7 @@ public class AppUser {
     private String telephone;
 
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
+    @JsonIgnore
     private Set<Bill> billsList;
 
 

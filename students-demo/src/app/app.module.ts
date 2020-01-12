@@ -15,13 +15,11 @@ import { CommonModule } from '@angular/common';
 import {AddBillComponent} from './add-bill/add-bill.component';
 import {BillsComponent} from './list-bill/bills.component';
 import {LoginComponent} from './login/login.component';
-import {SuccessLoginComponent} from './loginViews/successLogin.component';
 
 // Klasa w której deklaruję się komponenty i importuję się moduły.
 
 @NgModule({
   declarations: [
-    SuccessLoginComponent,
     LoginComponent,
     AppComponent,
     StudentsComponent,

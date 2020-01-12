@@ -1,6 +1,7 @@
 package com.adammateusz.spoldzielniamikro.controller;
 
 import com.adammateusz.spoldzielniamikro.domain.AppUser;
+import com.adammateusz.spoldzielniamikro.domain.AppUserRole;
 import com.adammateusz.spoldzielniamikro.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,8 +9,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.validation.constraints.Null;
+import java.util.Collections;
 import java.util.List;
-
+import java.util.Set;
 
 
 @RestController
@@ -19,6 +22,20 @@ public class AppUserController {
 
     @Autowired
     private AppUserService appUserService;
+
+    @GetMapping("/getUser/{username}")
+    public Set<AppUserRole> getRolesByUsername(@PathVariable String username)
+    {
+
+        try{
+            return appUserService.findByLogin(username).getAppUserRole();
+        }
+        catch (NullPointerException ex)
+        { }
+
+
+        return Collections.emptySet();
+    }
 
 
     @GetMapping("/")
