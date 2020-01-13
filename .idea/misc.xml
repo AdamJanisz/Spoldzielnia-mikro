@@ -10,7 +10,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/eureka/pom.xml" />
         <option value="$PROJECT_DIR$/zuul/pom.xml" />
-        <option value="$PROJECT_DIR$/authServ/pom.xml" />
         <option value="$PROJECT_DIR$/demo/pom.xml" />
       </list>
     </option>
