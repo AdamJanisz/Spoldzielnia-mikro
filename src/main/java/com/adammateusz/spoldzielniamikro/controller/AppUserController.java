@@ -36,7 +36,6 @@ public class AppUserController {
     @GetMapping("/getUser/{username}")
     public Set<AppUserRole> getRolesByUsername(@PathVariable String username)
     {
-
         try{
             return appUserService.findByLogin(username).getAppUserRole();
         }
@@ -56,29 +55,19 @@ public class AppUserController {
     @GetMapping("/{id}")
     public AppUser getAppUser(@PathVariable long id){
         return appUserService.getAppUser(id);
-<<<<<<< HEAD
     }
-    @PostMapping("/")
-    public AppUser createAppUser(@RequestBody AppUser appUser){
-        return appUserService.createAppUser(appUser);
-    }
-=======
-    }*/
+
 
     @CrossOrigin
->>>>>>> security
     @PutMapping("/")
     public void editAppUser(@RequestParam long id,@RequestBody AppUser appUser){
          appUserService.editAppUser(id,appUser);
     }
-<<<<<<< HEAD
-    @DeleteMapping("/{id}")
-    public void deleteAppUser (@PathVariable long id){
-=======
+
+
     @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.DELETE)
     public void deleteAppUser (@RequestParam long id){
->>>>>>> security
         appUserService.removeAppUser(id);
     }
 

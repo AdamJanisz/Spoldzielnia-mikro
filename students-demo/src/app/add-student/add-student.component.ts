@@ -12,23 +12,10 @@ import {Apartment} from "../models/apartment";
   styleUrls: ['./add-student.component.scss'],
 })
 export class AddStudentComponent implements OnInit {
-<<<<<<< HEAD
+
 
   form: FormGroup;
   apartments: Apartment[];
-
-
-
-=======
-  newStudentForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl('', Validators.email),
-    telephone: new FormControl(''),
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });
->>>>>>> security
 
   constructor(
     private studentService: StudentsService,
@@ -40,12 +27,12 @@ export class AddStudentComponent implements OnInit {
   }
   createForm() {
     this.form = this.fb.group({
-      firstName:  ['',Validators.required],
-      lastName:   ['',Validators.required],
-      email:      ['',Validators.email],
-      telephone:  ['',Validators.required],
-      login:      ['',Validators.required],
-      password:   ['',Validators.required],
+      firstName:  ['', Validators.required],
+      lastName:   ['', Validators.required],
+      email:      ['', Validators.email],
+      telephone:  ['', Validators.required],
+      username:      ['', Validators.required],
+      password:   ['', Validators.required],
       apartment: [this.apartments, Validators.required],
     });
 

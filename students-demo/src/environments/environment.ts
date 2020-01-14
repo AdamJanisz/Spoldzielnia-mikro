@@ -5,23 +5,18 @@
 export const environment = {
     production: false,
   // API_URL_STUDENTS: 'http://212.51.218.232:8000/api/students',
-<<<<<<< HEAD
+
 
   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/',
   API_URL_BILLS:    'http://localhost:8087/sm/building/bill/',
   API_URL_BUILDINGS: 'http://localhost:8087/sm/building/',
-  API_URL_APARTMENTS: 'http://localhost:8087/sm/building/apartment/'
-
-
-}
-
-=======
-   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/',
-  API_URL_REGISTER: 'http://localhost:8087/sm/appUser/register',
-   API_URL_BILLS:    'http://localhost:8087/sm/appUser/bill/',
+  API_URL_REGISTER: 'http://localhost:8087/sm/appUser/register/',
+  API_URL_APARTMENTS: 'http://localhost:8087/sm/building/apartment/',
   isUser: false
 }
->>>>>>> security
+
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

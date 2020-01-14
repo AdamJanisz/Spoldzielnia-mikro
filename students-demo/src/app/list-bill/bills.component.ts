@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BillService } from '../services/bill.service';
 import { MatTableDataSource } from '@angular/material/table';
-<<<<<<< HEAD
-=======
 import {StudentsService} from "../services/students.service";
->>>>>>> security
+
 
 @Component({
   selector: 'app-bills',
@@ -14,11 +12,8 @@ import {StudentsService} from "../services/students.service";
 export class BillsComponent implements OnInit {
 
   // Ustawianie nazw kolumn w tabeli
-<<<<<<< HEAD
+
   displayedColumns: string[] = ['id', 'date', 'electricity', 'hotWater', 'coldWater', 'sewage', 'maintenanceFund', 'totalAmount','action'];
-=======
-  displayedColumns: string[] = ['id', 'date', 'electricity', 'hotWater', 'coldWater', 'sewage', 'repairFund', 'action'];
->>>>>>> security
   dataSource;
 
   constructor(private billService: BillService) { }

@@ -4,11 +4,8 @@ package com.adammateusz.spoldzielniamikro.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-<<<<<<< HEAD
-=======
 import java.util.HashSet;
 import java.util.List;
->>>>>>> security
 import java.util.Set;
 
 @Table(name="appuser")
@@ -24,42 +21,22 @@ public class AppUser {
     private String email;
     private String telephone;
 
-<<<<<<< HEAD
-    //@JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
-    private Set<Bill> billsList;
     @OneToOne
     private Apartment apartment;
-    public Set<Bill> getBillsList() {
-        return billsList;
-    }
-=======
+
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
-    @JsonIgnore
+ // @JsonIgnore
     private Set<Bill> billsList;
 
 
     public Set<Bill> getBillsList() {
         return billsList;
     }
-
->>>>>>> security
     public void setBillsList(Set<Bill> billsList) {
         this.billsList = billsList;
     }
 
-    @Column(unique = true)
-<<<<<<< HEAD
-    private String login;
-    private String password;
-    public String getLogin() {
-        return login;
-    }
-    public void setLogin(String login) {
-        this.login = login;
-=======
     private String username;
-
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -79,7 +56,6 @@ public class AppUser {
 
     public void setUsername(String username) {
         this.username = username;
->>>>>>> security
     }
     public String getPassword() {
         return password;

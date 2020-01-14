@@ -1,12 +1,11 @@
 package com.adammateusz.spoldzielniamikro.service;
 
 import com.adammateusz.spoldzielniamikro.dao.AppUserRepository;
-<<<<<<< HEAD
+
 import com.adammateusz.spoldzielniamikro.dao.ApartmentRepository;
 import com.adammateusz.spoldzielniamikro.domain.Apartment;
-=======
+
 import com.adammateusz.spoldzielniamikro.dao.AppUserRoleRepository;
->>>>>>> security
 import com.adammateusz.spoldzielniamikro.domain.AppUser;
 import com.adammateusz.spoldzielniamikro.domain.AppUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,12 +56,10 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 
 	@Transactional
 	public AppUser createAppUser(AppUser appUser) {
-<<<<<<< HEAD
+
 		apartmentRepository.saveAndFlush(appUser.getApartment());
-=======
 		appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_USER"));//set role user by default
 		//appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_ADMIN")); can be user and admin as well
->>>>>>> security
 		return appUserRepository.save(appUser);
 	}
 
@@ -75,13 +72,9 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 		user.setEmail(appUser.getEmail());
 		user.setUsername(appUser.getUsername());
 		user.setPassword(appUser.getPassword());
-<<<<<<< HEAD
-		user.setApartment(appUser.getApartment());
 
+		user.setApartment(appUser.getApartment());
         appUserRepository.save(user);
-=======
-		appUserRepository.save(user);
->>>>>>> security
 	}
 
 

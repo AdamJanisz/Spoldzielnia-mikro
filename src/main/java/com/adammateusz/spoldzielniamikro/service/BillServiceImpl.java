@@ -32,7 +32,7 @@ public class BillServiceImpl implements BillService{
 
     @Override
     public void editBill(Bill bill) {
-<<<<<<< HEAD
+
         Bill oldBill=billRepository.findById(bill.getId());
         oldBill.setColdWater(bill.getColdWater());
         oldBill.setElectricity(bill.getElectricity());
@@ -40,9 +40,6 @@ public class BillServiceImpl implements BillService{
         oldBill.setSewage(bill.getSewage());
         oldBill.setMaintenanceFund(bill.getMaintenanceFund());
         billRepository.save(oldBill);
-=======
-        billRepository.save(bill);
->>>>>>> security
 
     }
 

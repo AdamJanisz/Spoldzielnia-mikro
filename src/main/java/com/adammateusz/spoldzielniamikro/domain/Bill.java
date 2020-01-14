@@ -1,10 +1,7 @@
 package com.adammateusz.spoldzielniamikro.domain;
 
-<<<<<<< HEAD
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-=======
->>>>>>> security
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,18 +16,11 @@ public class Bill {
     private int hotWater;
     private int coldWater;
     private int sewage;
-<<<<<<< HEAD
     private int maintenanceFund;
     private int totalAmount;
     private String date;
 
-    @JsonIgnore
-=======
-    private int repairFund;
-    private int totalAmount;
-    private String date;
 
->>>>>>> security
     @ManyToOne
     private AppUser appUser;
 
@@ -90,22 +80,15 @@ public class Bill {
         this.sewage = sewage;
     }
 
-<<<<<<< HEAD
+
     public int getMaintenanceFund() {
         return maintenanceFund;
     }
 
     public void setMaintenanceFund(int maintenanceFund) {
         this.maintenanceFund = maintenanceFund;
-=======
-    public int getRepairFund() {
-        return repairFund;
     }
 
-    public void setRepairFund(int repairFund) {
-        this.repairFund = repairFund;
->>>>>>> security
-    }
 
     public int getTotalAmount() {
         return totalAmount;

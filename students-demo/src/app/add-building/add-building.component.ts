@@ -25,14 +25,14 @@ export class AddBuildingComponent implements OnInit {
   }
   createForm() {
     this.form = this.fb.group({
-      city:  ['',Validators.required],
-      street:   ['',Validators.required],
-      buildingNumber:      ['',Validators.required],
-      electricityPrice:  ['',Validators.required],
-      hotWaterPrice:      ['',Validators.required],
-      coldWaterPrice:   ['',Validators.required],
+      city:  ['', Validators.required],
+      street:   ['', Validators.required],
+      buildingNumber:      ['', Validators.required],
+      electricityPrice:  ['', Validators.required],
+      hotWaterPrice:      ['', Validators.required],
+      coldWaterPrice:   ['', Validators.required],
       sewagePrice: ['', Validators.required],
-      maintenanceFundPrice:   ['',Validators.required],
+      maintenanceFundPrice:   ['', Validators.required],
       owner: [this.students, Validators.required],
     });
   }
