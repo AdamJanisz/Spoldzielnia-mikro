@@ -31,6 +31,7 @@ public class ZuulApplication {
    @Autowired
    RemoteTokenServices remoteTokenServices;
 
+
     @Bean
     public OAuth2AuthenticationManager oAuth2AuthenticationManager() {
         OAuth2AuthenticationManager oAuth2AuthenticationManager = new OAuth2AuthenticationManager();

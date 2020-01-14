@@ -23,6 +23,16 @@ public class AppUserController {
     @Autowired
     private AppUserService appUserService;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @PostMapping("/register")
+    public AppUser createAppUser(@RequestBody AppUser appUser)
+    {
+        appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+        return appUserService.createAppUser(appUser);
+    }
+
     @GetMapping("/getUser/{username}")
     public Set<AppUserRole> getRolesByUsername(@PathVariable String username)
     {

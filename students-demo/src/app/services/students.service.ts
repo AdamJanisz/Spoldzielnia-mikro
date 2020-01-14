@@ -3,9 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Student} from '../models/student';
 import {environment} from '../../environments/environment';
-import {__param} from "tslib";
-import {Params} from "@angular/router";
-import {AppUserRole} from "../models/AppUserRole";
+import {__param} from 'tslib';
+import {Params} from '@angular/router';
+import {AppUserRole} from '../models/AppUserRole';
 
 // Zastosowanie serwisów jest ogromne. W naszym przypadku
 // zawiera logikę związaną z interakcją z zewnętrznym API.
