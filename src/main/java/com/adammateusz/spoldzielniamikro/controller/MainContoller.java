@@ -4,18 +4,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import javax.annotation.security.RolesAllowed;
+
+@RestController
 public class MainContoller {
 
-    @GetMapping("/")
+    @GetMapping("/public")
     public String greeting1() {
-        return "mainBody";
+        return "welcome publicznie";
     }
 
-    @GetMapping("/body")
+    @RolesAllowed({"ROLE_ADMIN"})
+    @GetMapping("/admin")
     public String greeting() {
-        return "2body";
+        return "im admin";
     }
 
 

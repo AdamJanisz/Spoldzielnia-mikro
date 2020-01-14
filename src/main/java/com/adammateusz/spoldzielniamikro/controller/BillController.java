@@ -5,11 +5,19 @@ import com.adammateusz.spoldzielniamikro.domain.Bill;
 import com.adammateusz.spoldzielniamikro.service.AppUserService;
 import com.adammateusz.spoldzielniamikro.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+=======
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> security
 import java.util.List;
 
 @RestController
@@ -17,6 +25,7 @@ import java.util.List;
 public class BillController {
     @Autowired
     private BillService billService;
+<<<<<<< HEAD
     @Autowired
     private AppUserService appUserService;
 
@@ -32,11 +41,34 @@ public class BillController {
     }
     @PutMapping("/")
     public void editBill(@RequestBody Bill bill){ billService.editBill(bill); }
+=======
+
+    @Autowired
+    AppUserService appUserService;
+
+    @CrossOrigin
+    @GetMapping("/")
+    public List<Bill> getAppUsersLists() {
+        return billService.getAllBills();
+    }
+    @PostMapping("/")
+    public Bill createNewBill(@RequestBody Bill bill)
+    {
+        AppUser appUser = appUserService.findLoggedAppUser();
+        bill.setAppUser(appUser);
+        return billService.addBill(bill);
+    }
+    @PutMapping("/")
+    public void editAppUser(@RequestParam long id,@RequestBody Bill bill){
+        System.out.println("proba edycji rachunku");
+    }
+>>>>>>> security
     @RequestMapping(value = "/", method = RequestMethod.DELETE)
     public void deleteBill (@RequestParam long id){
        billService.removeBill(id);
     }
 
+<<<<<<< HEAD
     @Scheduled(cron="0 */5 * * * *")
     public void generateBills() {
 
@@ -58,4 +90,6 @@ public class BillController {
         });
     }
 
+=======
+>>>>>>> security
 }

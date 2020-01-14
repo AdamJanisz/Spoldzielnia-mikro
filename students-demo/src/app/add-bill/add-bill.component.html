@@ -1,9 +1,12 @@
 <div class="form-container">
 
   <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="newBillForm">
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> security
     <mat-form-field class="example-full-width">
       <mat-label>Elektryczność</mat-label>
       <input matInput formControlName="electricity" required />
@@ -31,9 +34,15 @@
 
     <mat-form-field class="example-full-width">
 
+<<<<<<< HEAD
       <mat-label>Fundusz naprawczy</mat-label>
       <input matInput formControlName="maintenanceFund" required />
       <mat-error *ngIf="hasError('maintenanceFund')">Podaj prawidlowa wartość</mat-error>
+=======
+      <mat-label>Repair fund</mat-label>
+      <input matInput formControlName="repairFund" required />
+      <mat-error *ngIf="hasError('repairFund')">Podaj prawidlowa wartość</mat-error>
+>>>>>>> security
     </mat-form-field>
 
     <!-- Wywołanie metody onSubmit() z add-student.component.ts przy naciśnięciu przycisku

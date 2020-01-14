@@ -1,24 +1,30 @@
 package com.adammateusz.spoldzielniamikro.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+<<<<<<< HEAD
+=======
+import java.util.HashSet;
+import java.util.List;
+>>>>>>> security
 import java.util.Set;
 
 @Table(name="appuser")
 @Entity
 public class AppUser {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
 
     private String firstName;
     private String lastName;
     private String email;
     private String telephone;
 
+<<<<<<< HEAD
     //@JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
     private Set<Bill> billsList;
@@ -27,11 +33,23 @@ public class AppUser {
     public Set<Bill> getBillsList() {
         return billsList;
     }
+=======
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
+    @JsonIgnore
+    private Set<Bill> billsList;
+
+
+    public Set<Bill> getBillsList() {
+        return billsList;
+    }
+
+>>>>>>> security
     public void setBillsList(Set<Bill> billsList) {
         this.billsList = billsList;
     }
 
     @Column(unique = true)
+<<<<<<< HEAD
     private String login;
     private String password;
     public String getLogin() {
@@ -39,6 +57,29 @@ public class AppUser {
     }
     public void setLogin(String login) {
         this.login = login;
+=======
+    private String username;
+
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
+
+    public Set<AppUserRole> getAppUserRole() {
+        return appUserRole;
+    }
+
+    public void setAppUserRole(Set<AppUserRole> appUserRole) {
+        this.appUserRole = appUserRole;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+>>>>>>> security
     }
     public String getPassword() {
         return password;

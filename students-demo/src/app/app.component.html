@@ -7,6 +7,7 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
     <div id="kontakt">Masz pytania co do stanu lokali lub wysokości czynszu? Skontaktuj się z nami: xxx@email.pl tel.: XXX XXX XXX (pon-pt: 8:00
       - 21:00)
     </div>
+<<<<<<< HEAD
     <a [routerLink]="['/']" style="color: black"><p class="uppercaseName">osiedle raj</p></a>
     <div id="menuGorne">
       <ul id="listaPoziomaHeader">
@@ -16,6 +17,28 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
         <li><a [routerLink]="['/allBuildings']"><span>Lista budynków</span></a>  </li>
         <li><a [routerLink]="['/addAppartment']"><span>Dodaj lokal</span></a>  </li>
         <li><a [routerLink]="['/addBuilding']"><span>Dodaj budynek</span></a>  </li>
+=======
+
+    <h3 id="userLoginInfoName" style="position: absolute; top: 30px; left:5px"></h3>
+    <h3 id="logoutInfo" style="position: absolute; color: red;top: 70px; left:5px" (click)="myFunc()"></h3>
+    <div *ngIf="anonymous==false;">
+    <h3 style="position: absolute; top: 70px; left: 100px">Rola: {{appuserroles[0]}}</h3>
+    </div>
+
+    <a [routerLink]="['/']" style="color: black"><p class="uppercaseName">osiedle raj</p></a>
+    <div id="menuGorne">
+      <ul id="listaPoziomaHeader">
+        <div *ngIf="anonymous==true;">
+        <li><a [routerLink]="['/enrolment']"><span>Dodaj studenta</span></a> </li>
+        <li><a [routerLink]="['/login']"><span>Login</span></a> </li>
+        </div>
+        <div *ngIf="anonymous==false;">
+        <li><a [routerLink]="['/students']"><span>lista studentow</span></a> </li>
+    <div *ngIf="appuserroles[0]==='ROLE_USER';">
+        <li><a [routerLink]="['/addBill']"><span>Dodaj rachunek</span></a> </li>
+    </div>
+        <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
+>>>>>>> security
 
         <li><a href="#"><span>Administracja</span></a>
           <ul class="drugiPoziom">
@@ -23,7 +46,6 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
             <li><a href="#">Janusz Matejko</a></li>
             <li><a href="#">Adam Małysz</a></li>
           </ul>
-
         </li>
         <li><a href="#"><span>Zarządzaj</span></a>
           <ul class="drugiPoziom">
@@ -32,6 +54,7 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
             <li><a href="#">Rachunki</a></li>
           </ul>
         </li>
+        </div>
       </ul>
 
     </div>

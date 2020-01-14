@@ -35,6 +35,7 @@
     </ng-container>
 
 
+<<<<<<< HEAD
     <ng-container matColumnDef="maintenanceFund">
       <th mat-header-cell *matHeaderCellDef>Fundusz naprawczy</th>
       <td mat-cell *matCellDef="let bill">{{ bill.maintenanceFund }}</td>
@@ -50,6 +51,17 @@
       <mat-header-cell  *matHeaderCellDef >Akcja</mat-header-cell>
       <mat-cell *matCellDef="let bill" >
         <button mat-button type="" (click)=" billService.editBill(bill.id)" >Edytuj</button>
+=======
+    <ng-container matColumnDef="repairFund">
+      <th mat-header-cell *matHeaderCellDef>Coś innego</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.repairFund }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell  *matHeaderCellDef >Akcja</mat-header-cell>
+      <mat-cell *matCellDef="let bill" >
+        <button mat-button type="" (click)=" billService.deleteBill(bill.id)" >Usuń</button>
+>>>>>>> security
       </mat-cell>
     </ng-container>
 

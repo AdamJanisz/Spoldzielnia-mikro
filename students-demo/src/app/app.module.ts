@@ -12,26 +12,37 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import {AddBillComponent} from "./add-bill/add-bill.component";
 import {BillsComponent} from "./list-bill/bills.component";
 import {BuildingsComponent} from "./building-list/buildings.component";
 import {AddApartmentComponent} from "./add-appartment/add-apartment.component";
 import {MatSelectModule} from "@angular/material";
 import {AddBuildingComponent} from "./add-building/add-building.component";
+=======
+import {AddBillComponent} from './add-bill/add-bill.component';
+import {BillsComponent} from './list-bill/bills.component';
+import {LoginComponent} from './login/login.component';
+>>>>>>> security
 
 // Klasa w której deklaruję się komponenty i importuję się moduły.
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AppComponent,
     StudentsComponent,
     AddStudentComponent,
     DashboardComponent,
     AddBillComponent,
+<<<<<<< HEAD
     BillsComponent,
     BuildingsComponent,
     AddApartmentComponent,
     AddBuildingComponent
+=======
+    BillsComponent
+>>>>>>> security
   ],
   imports: [
     CommonModule,

@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BillService } from '../services/bill.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+<<<<<<< HEAD
 import {MatTableDataSource} from "@angular/material";
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
 import {Bill} from "../models/bill";
+=======
+import {ApiService} from "../core/api.service";
+>>>>>>> security
 
 @Component({
   selector: 'app-add-bill',
@@ -13,14 +17,19 @@ import {Bill} from "../models/bill";
   styleUrls: ['./add-bill.component.scss']
 })
 export class AddBillComponent implements OnInit {
+<<<<<<< HEAD
 
   newBillForm = new FormGroup({
 
     id: new FormControl(''),
+=======
+  newBillForm = new FormGroup({
+>>>>>>> security
     electricity: new FormControl(''),
     hotWater: new FormControl(''),
     coldWater: new FormControl(''),
     sewage: new FormControl(''),
+<<<<<<< HEAD
     maintenanceFund: new FormControl(''),
 
   });
@@ -49,17 +58,42 @@ export class AddBillComponent implements OnInit {
 
   }
 
+=======
+    repairFund: new FormControl(''),
+
+  });
+
+  constructor(
+    private billService: BillService,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit() {}
+
+  // Metoda do zapisywania Studenta. Jeśli pola spełniaja warunki walidacji zostanie wywołana metoda z studentService zapisująca studenta.
+  // Komponent Toastr jest odpowiedzialny za wyświetlenie aletru informującego o przebiegu zleconej operacji
+  // https://www.npmjs.com/package/ngx-toastr
+>>>>>>> security
 
   onSubmit() {
     if (!this.newBillForm.valid) {
       return false;
     }
+<<<<<<< HEAD
     this.billService.updateBill(this.newBillForm.value).subscribe(
       data => {
         this.toastr.success('Sukces!', 'Rachunek edytowany prawidłowo');
       },
       error => {
         this.toastr.error('Błąd!', 'Rachunek edytowany prawidłowo');
+=======
+    this.billService.saveBill(this.newBillForm.value).subscribe(
+      data => {
+        this.toastr.success('Sukces!', 'Student dodany prawidłowo');
+      },
+      error => {
+        this.toastr.error('Błąd!', 'Student niedodany prawidłowo');
+>>>>>>> security
         console.log('Coś poszło nie tak !', error);
       }
     );
