@@ -6,25 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="demo" />
+        <module name="buildings" />
         <module name="eureka" />
         <module name="spoldzielniamikro" />
         <module name="zuul" />
-<<<<<<< HEAD
-        <module name="buildings" />
-        <module name="eureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="billsGenerator" target="1.5" />
       <module name="buildings" target="1.8" />
-=======
-      </profile>
-    </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="authServ" target="1.8" />
-      <module name="demo" target="1.8" />
->>>>>>> security
       <module name="eureka" target="1.8" />
       <module name="spoldzielniamikro" target="1.8" />
       <module name="zuul" target="1.8" />
@@ -32,12 +21,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-<<<<<<< HEAD
       <module name="buildings" options="-parameters" />
-=======
-      <module name="authServ" options="-parameters" />
-      <module name="demo" options="-parameters" />
->>>>>>> security
       <module name="eureka" options="-parameters" />
       <module name="spoldzielniamikro" options="-parameters" />
       <module name="zuul" options="-parameters" />
