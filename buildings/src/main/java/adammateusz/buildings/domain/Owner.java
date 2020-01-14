@@ -11,14 +11,14 @@ public class Owner {
 
     @Id
     private long id;
-    private String login;
+    private String username;
 
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
     public long getId() {
         return id;

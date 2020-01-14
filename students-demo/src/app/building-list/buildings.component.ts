@@ -10,7 +10,7 @@ import {BuildingService} from "../services/building.service";
 export class BuildingsComponent implements OnInit {
 
   // Ustawianie nazw kolumn w tabeli
-  displayedColumns: string[] = ['id', 'city', 'street', 'buildingNumber', 'electricityPrice', 'hotWaterPrice', 'coldWaterPrice', 'sewagePrice', 'maintenanceFundPrice','owner','action'];
+  displayedColumns: string[] = ['id', 'city', 'street', 'buildingNumber', 'electricityPrice', 'hotWaterPrice', 'coldWaterPrice', 'sewagePrice', 'maintenanceFundPrice', 'owner', 'action'];
   dataSource;
 
   constructor(private buildingService: BuildingService) { }

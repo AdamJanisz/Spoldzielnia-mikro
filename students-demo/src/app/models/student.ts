@@ -15,6 +15,7 @@ export interface Student {
   email?: string;
   telephone?: string;
   password?: string;
+  username?: string;
   apartment?: Apartment;
   role?: Set<AppUserRole>;
 }

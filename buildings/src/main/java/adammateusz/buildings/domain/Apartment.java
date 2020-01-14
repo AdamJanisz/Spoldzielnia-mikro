@@ -17,7 +17,7 @@ public class Apartment {
     private Building apartmentAddress;
     @OneToOne(cascade = CascadeType.ALL)
     private Owner tenant;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Bill> billList;
 
 

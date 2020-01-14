@@ -24,13 +24,14 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
           <li><a [routerLink]="['/addBuilding']"><span>Dodaj budynek</span></a>  </li>
         <li><a [routerLink]="['/enrolment']"><span>Dodaj studenta</span></a> </li>
         <li><a [routerLink]="['/login']"><span>Login</span></a> </li>
+          <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
         </div>
         <div *ngIf="anonymous==false;">
         <li><a [routerLink]="['/students']"><span>lista studentow</span></a> </li>
     <div *ngIf="appuserroles[0]==='ROLE_USER';">
         <li><a [routerLink]="['/addBill']"><span>Dodaj rachunek</span></a> </li>
     </div>
-        <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
+
 
 
         <li><a href="#"><span>Administracja</span></a>
