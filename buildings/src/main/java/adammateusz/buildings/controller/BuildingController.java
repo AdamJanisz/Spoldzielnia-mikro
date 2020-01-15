@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -58,7 +59,11 @@ public class BuildingController {
         }
 
 
-
+//@GetMapping("/loggedApartmentNumber")
+//        public long getLoggedUserId(@RequestHeader("Authorization") String token)
+//{
+//        return appUserServiceClient.getLoggedAppUserApartmentNumber(token);
+//}
 
 
 }

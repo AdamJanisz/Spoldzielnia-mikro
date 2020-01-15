@@ -103,6 +103,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 
 			String username;
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 			if (principal instanceof UserDetails) {
 				username = ((UserDetails) principal).getUsername();
 			} else {
@@ -110,8 +111,28 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 			}
 
 
+
 			AppUser appUser = this.findByLogin(username);
 			return appUser;
+
+	}
+
+	@Override
+	public AppUser findLoggedAppUser(Object principal) {
+
+		String username;
+		principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+			username = principal.toString();
+		}
+
+
+
+		AppUser appUser = this.findByLogin(username);
+		return appUser;
 
 	}
 }

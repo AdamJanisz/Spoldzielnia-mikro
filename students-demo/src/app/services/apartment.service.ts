@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 
@@ -13,6 +13,7 @@ import {Apartment} from "../models/apartment";
 export class ApartmentService {
   // Pobieranie z environment zmiennej środowiskowej reprezentującej url do serwisu studentów za pośrednictwem gateway
   API_URL_APARTMENT = environment.API_URL_APARTMENTS;
+  API_URL_LOGGEDAPARTMENT = environment.API_URL_LOGGEDAPARTMENT;
 
   // W konstruktorze wstrzykiwany jest klient http
   constructor(private httpClient: HttpClient,private router: Router) { }
@@ -24,6 +25,14 @@ export class ApartmentService {
   // Za pomocą httpClient odpytywany jest StudentService
   getApartment(id: String): Observable<Apartment> {
     return this.httpClient.get(this.API_URL_APARTMENT+id);
+  }
+
+  getLoggedApartment(username: string): Observable<Apartment[]> {
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get<Apartment[]>(this.API_URL_LOGGEDAPARTMENT + username,{headers: reqHeader});
   }
   getApartments(): Observable<Apartment[]> {
     return this.httpClient.get<Apartment[]>(this.API_URL_APARTMENT);

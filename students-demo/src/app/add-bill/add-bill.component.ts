@@ -62,7 +62,6 @@ export class AddBillComponent implements OnInit {
     if (!this.newBillForm.valid) {
       return false;
     }
-
     this.billService.updateBill(this.newBillForm.value).subscribe(
       data => {
         this.toastr.success('Sukces!', 'Rachunek edytowany prawidłowo');

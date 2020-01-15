@@ -20,13 +20,18 @@ public class BillController {
     private ApartmentService apartmentService;
 
     @GetMapping("/")
-    public List<Bill> getBillsLists() { return billService.getAllBills(); }
+    public List<Bill> getBillsLists() {
+
+
+        return billService.getAllBills(); }
     @GetMapping("/{id}")
     public Bill getBill(@PathVariable long id){
         return billService.getBill(id);
     }
     @GetMapping("/appartment/{id}")
-    public List<Bill> getApartmentBills(@PathVariable long id){ return billService.listApartmentBills(id); }
+    public List<Bill> getApartmentBills(@PathVariable long id){
+        System.out.println("aparment id"+id);
+        return billService.listApartmentBills(id); }
     @PostMapping("/")
     public Bill createNewBill(@RequestBody Bill bill){
         bill.setTotalAmount();

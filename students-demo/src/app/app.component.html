@@ -19,14 +19,16 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
       <ul id="listaPoziomaHeader">
         <div *ngIf="anonymous==true;">
 
-          <li><a [routerLink]="['/allBuildings']"><span>Lista budynków</span></a>  </li>
-          <li><a [routerLink]="['/addAppartment']"><span>Dodaj lokal</span></a>  </li>
-          <li><a [routerLink]="['/addBuilding']"><span>Dodaj budynek</span></a>  </li>
         <li><a [routerLink]="['/enrolment']"><span>Dodaj studenta</span></a> </li>
-        <li><a [routerLink]="['/login']"><span>Login</span></a> </li>
-          <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
+          <li><a [routerLink]="['/login']"><span>Login</span></a> </li>
         </div>
         <div *ngIf="anonymous==false;">
+          <li><a [routerLink]="['/addAppartment']"><span>Dodaj lokal</span></a>  </li>
+          <li><a [routerLink]="['/allBuildings']"><span>Lista budynków</span></a>  </li>
+
+          <li><a [routerLink]="['/addBuilding']"><span>Dodaj budynek</span></a>  </li>
+
+          <li><a [routerLink]="['/allBills']"><span>Lista rachunków</span></a>  </li>
         <li><a [routerLink]="['/students']"><span>lista studentow</span></a> </li>
     <div *ngIf="appuserroles[0]==='ROLE_USER';">
         <li><a [routerLink]="['/addBill']"><span>Dodaj rachunek</span></a> </li>
@@ -34,20 +36,20 @@ Wykorzystano https://material.angular.io/components/toolbar/overview -->
 
 
 
-        <li><a href="#"><span>Administracja</span></a>
-          <ul class="drugiPoziom">
-            <li><a href="#">Elżbieta Bąk</a></li>
-            <li><a href="#">Janusz Matejko</a></li>
-            <li><a href="#">Adam Małysz</a></li>
-          </ul>
-        </li>
-        <li><a href="#"><span>Zarządzaj</span></a>
-          <ul class="drugiPoziom">
-            <li><a href="#">Lokale</a></li>
-            <li><a href="#">Mieszkańcy</a></li>
-            <li><a href="#">Rachunki</a></li>
-          </ul>
-        </li>
+        <!--<li><a href="#"><span>Administracja</span></a>-->
+          <!--<ul class="drugiPoziom">-->
+            <!--<li><a href="#">Elżbieta Bąk</a></li>-->
+            <!--<li><a href="#">Janusz Matejko</a></li>-->
+            <!--<li><a href="#">Adam Małysz</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li><a href="#"><span>Zarządzaj</span></a>-->
+          <!--<ul class="drugiPoziom">-->
+            <!--<li><a href="#">Lokale</a></li>-->
+            <!--<li><a href="#">Mieszkańcy</a></li>-->
+            <!--<li><a href="#">Rachunki</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
         </div>
       </ul>
 

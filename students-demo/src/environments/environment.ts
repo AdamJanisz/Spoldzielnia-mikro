@@ -9,9 +9,11 @@ export const environment = {
 
   API_URL_STUDENTS: 'http://localhost:8087/sm/appUser/',
   API_URL_BILLS:    'http://localhost:8087/sm/building/bill/',
+  API_URL_GET_BILLS: 'http://localhost:8087/sm/appUser/bill/',
   API_URL_BUILDINGS: 'http://localhost:8087/sm/building/',
   API_URL_REGISTER: 'http://localhost:8087/sm/appUser/register/',
   API_URL_APARTMENTS: 'http://localhost:8087/sm/building/apartment/',
+  API_URL_LOGGEDAPARTMENT: 'http://localhost:8087/sm/appUser/loggedApartmentNumber/',
   isUser: false
 }
 

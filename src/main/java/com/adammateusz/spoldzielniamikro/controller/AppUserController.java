@@ -1,5 +1,6 @@
 package com.adammateusz.spoldzielniamikro.controller;
 
+import com.adammateusz.spoldzielniamikro.domain.Apartment;
 import com.adammateusz.spoldzielniamikro.domain.AppUser;
 import com.adammateusz.spoldzielniamikro.domain.AppUserRole;
 import com.adammateusz.spoldzielniamikro.service.AppUserService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.security.RolesAllowed;
 import javax.validation.constraints.Null;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -62,6 +64,22 @@ public class AppUserController {
     @PutMapping("/")
     public void editAppUser(@RequestParam long id,@RequestBody AppUser appUser){
          appUserService.editAppUser(id,appUser);
+    }
+
+    @GetMapping("/loggedApartmentNumber/{username}")
+    public Set<Apartment> getLoggedApartmentNumber(@PathVariable String username)
+    {
+        try{
+            AppUser appUser=appUserService.findByLogin(username);
+            Set<Apartment> apSet=new HashSet<>();
+            apSet.add(appUser.getApartment());
+            return apSet;
+        }
+        catch (Exception ex)
+        {
+
+        }
+return Collections.EMPTY_SET;
     }
 
 

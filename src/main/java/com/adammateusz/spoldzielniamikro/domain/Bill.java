@@ -97,4 +97,6 @@ public class Bill {
     public void setTotalAmount(int totalAmount) {
         this.totalAmount = totalAmount;
     }
+
+
 }

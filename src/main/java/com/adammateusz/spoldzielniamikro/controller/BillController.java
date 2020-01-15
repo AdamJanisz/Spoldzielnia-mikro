@@ -28,7 +28,17 @@ public class BillController {
     private AppUserService appUserService;
 
     @GetMapping("/")
-    public List<Bill> getBillsLists() { return billService.getAllBills(); }
+    public List<Bill> getBillsLists() {
+try {
+    AppUser appUser = appUserService.findLoggedAppUser();
+    System.out.println(appUser.getId());
+    System.out.println(appUser.getApartment().getApartmentNumber());
+}
+catch (Exception ex)
+{
+
+}
+        return billService.getAllBills(); }
     @GetMapping("/{id}")
     public Bill getBill(@PathVariable long id){
         return billService.getBill(id);

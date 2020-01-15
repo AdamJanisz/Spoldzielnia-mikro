@@ -38,12 +38,11 @@ export class LoginComponent implements OnInit {
       window.sessionStorage.setItem('token', JSON.stringify(data));
       console.log(window.sessionStorage.getItem('token'));
       localStorage.setItem('currentUser', body.get('username'));
+      this.header.ngOnInit();
       this.router.navigate(['/']);
     }, error => {
       alert(error.error.error_description);
     });
-    window.sessionStorage.setItem('username' , body.get('username'));
-    this.header.ngOnInit();
   }
   ngOnInit() {
     window.sessionStorage.removeItem('token');

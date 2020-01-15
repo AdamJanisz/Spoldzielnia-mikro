@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Bill } from '../models/bill';
 import { environment } from '../../environments/environment';
@@ -28,8 +28,8 @@ export class BillService {
   getBill(billId: String): Observable<Bill> {
     return this.httpClient.get(this.API_URL_BILLS+billId);
   }
-  getBills(): Observable<Bill[]> {
-    return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
+  getBills(appartmentId: number): Observable<Bill[]> {
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS + 'appartment/' + appartmentId);
   }
   editBill(id : String) {
     this.router.navigate(['editBill/',id]);
@@ -38,6 +38,7 @@ export class BillService {
   updateBill(bill: Bill): Observable<Bill> {
     return this.httpClient.put(this.API_URL_BILLS, bill);
   }
+
 
   /*getBills(): Observable<Bill[]> {
     const reqHeader = new HttpHeaders({

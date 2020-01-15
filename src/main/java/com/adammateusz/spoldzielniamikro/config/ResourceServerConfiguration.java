@@ -15,7 +15,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception
     {
         http.antMatcher("/appUser/**").authorizeRequests().
-                antMatchers("/register/**","/register","/appUser/getUser/**","/appUser/register/**").permitAll().//dodanie publicznego endpointu bez autoryzacji
+                antMatchers("/register/**","/register","/appUser/getUser/**","/appUser/register/**","/appUser/loggedApartmentNumber/**","/appUser/loggedApartmentNumber").permitAll().//dodanie publicznego endpointu bez autoryzacji
                 anyRequest().authenticated();
     }
 }

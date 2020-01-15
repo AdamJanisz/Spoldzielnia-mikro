@@ -25,7 +25,7 @@ public class AppUser {
     private Apartment apartment;
 
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
- // @JsonIgnore
+        @JsonIgnore
     private Set<Bill> billsList;
 
 
@@ -40,6 +40,7 @@ public class AppUser {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
 
     public Set<AppUserRole> getAppUserRole() {
