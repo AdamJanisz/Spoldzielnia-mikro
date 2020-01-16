@@ -43,4 +43,6 @@ public class Apartment {
     public void setTenant(Owner tenant) { this.tenant = tenant; }
     public List<Bill> getBillList() { return billList; }
     public void setBillList(List<Bill> billList) { this.billList = billList; }
+
+
 }

@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.anonymous = true;
     this.appuserroles[0] = null;
+    window.sessionStorage.removeItem('currentRole');
     console.log('user= ' + window.sessionStorage.getItem('username'));
     if (window.sessionStorage.getItem('username'))  {
       document.getElementById('userLoginInfoName').innerText = 'Zalogowany jako:' + window.sessionStorage.getItem('username');
@@ -43,6 +44,7 @@ export class AppComponent implements OnInit {
       this.userService.updateCurrentUserRoles(window.sessionStorage.getItem('username')).subscribe(appuserroles =>
         appuserroles.forEach(appuserrole => {
           this.appuserroles[0] = appuserrole.role;
+          window.sessionStorage.setItem('currentRole', this.appuserroles[0]);
           this.iterator++;
           if (this.appuserroles[0] != null) {
             this.anonymous = false;

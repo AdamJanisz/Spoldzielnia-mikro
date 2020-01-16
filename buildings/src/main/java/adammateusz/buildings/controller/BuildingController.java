@@ -1,5 +1,6 @@
 package adammateusz.buildings.controller;
 
+import adammateusz.buildings.domain.Apartment;
 import adammateusz.buildings.domain.Building;
 import adammateusz.buildings.domain.BuildingOwnerException;
 import adammateusz.buildings.domain.Owner;
@@ -13,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -56,6 +58,24 @@ public class BuildingController {
                 }catch(BuildingOwnerException e){
                         throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage(),e);
                 }
+        }
+
+        @GetMapping(value = "getOwnerAparments/{ownerId}")
+        public List<Apartment> listOwnerApartments(@PathVariable long ownerId )
+        {
+                System.out.println("im in building "+ownerId);
+                List<Building> buildings=buildingService.listManagerBuildings(ownerId);
+
+                List<Apartment> apartmentsInAboveBuilding=new ArrayList<>();
+                for(Building building: buildings)
+                {
+                        for(Apartment apartment:building.getApartmentList())
+                        apartmentsInAboveBuilding.add(apartment);
+                }
+
+                System.out.println(apartmentsInAboveBuilding.size());
+
+                return apartmentsInAboveBuilding;
         }
 
 

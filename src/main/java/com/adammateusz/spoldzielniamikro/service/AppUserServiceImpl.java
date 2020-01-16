@@ -64,6 +64,11 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 	}
 
 	@Transactional
+	public List<AppUser> findByAparmentId(long aparmentId) {
+		return appUserRepository.appUsersForAparment(aparmentId);
+	}
+
+	@Transactional
 	public void editAppUser(long id, AppUser appUser) {
 
 		AppUser user = appUserRepository.findById(id);

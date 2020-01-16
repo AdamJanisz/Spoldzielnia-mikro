@@ -10,9 +10,13 @@ import java.util.List;
 @FeignClient(name="BUILDINGS-SERVICE")
 public interface ApartmentServiceClient {
 
-        @GetMapping(value = "/apartment/")
-        List<Apartment> getApartment();
+//        @GetMapping(value = "/apartment/")
+//        List<Apartment> getApartment();
 
-        @GetMapping(value = "/apartment/{id}")
-        Apartment getApartment(@PathVariable Long id);
+//        @GetMapping(value = "/apartment/{id}")
+//        Apartment getApartment(@PathVariable Long id);
+
+
+        @GetMapping(value = "building/getOwnerAparments/{ownerId}")
+        List<Apartment> getApartments(@PathVariable long ownerId);
 }

@@ -16,5 +16,6 @@ public interface AppUserService {
     public AppUser findByLogin(String login);
 	AppUser findLoggedAppUser();
 	AppUser findLoggedAppUser(Object principal);
+	List<AppUser> findByAparmentId(long apartmentId);
 
 }

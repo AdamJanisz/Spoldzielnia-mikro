@@ -28,6 +28,9 @@ export class BillService {
   getBill(billId: String): Observable<Bill> {
     return this.httpClient.get(this.API_URL_BILLS+billId);
   }
+  getAllBills(): Observable<Bill[]> {
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
+  }
   getBills(appartmentId: number): Observable<Bill[]> {
     return this.httpClient.get<Bill[]>(this.API_URL_BILLS + 'appartment/' + appartmentId);
   }

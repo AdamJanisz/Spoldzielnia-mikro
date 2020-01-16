@@ -2,6 +2,7 @@ package com.adammateusz.spoldzielniamikro.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -21,11 +22,14 @@ public class AppUser {
     private String email;
     private String telephone;
 
-    @OneToOne
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JoinTable(name="appUserApartment", joinColumns = @JoinColumn(name = "userId"),
+    inverseJoinColumns = @JoinColumn(name = "apartmentId"))
     private Apartment apartment;
 
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
-        @JsonIgnore
+    @JsonIgnore
     private Set<Bill> billsList;
 
 
@@ -96,5 +100,20 @@ public class AppUser {
     }
     public Apartment getApartment() { return apartment; }
     public void setApartment(Apartment apartment) { this.apartment = apartment; }
+
+
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", apartment=" + apartment +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
 

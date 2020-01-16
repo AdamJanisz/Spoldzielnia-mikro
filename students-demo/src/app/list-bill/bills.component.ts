@@ -25,13 +25,20 @@ export class BillsComponent implements OnInit {
   // Korzystając z komponentów Angular Material dostajemy za darmo często używane funkcjonalności takie jak filtrowanie, sortowanie itp.
   // https://material.angular.io/components/table/overview
   ngOnInit() {
-    console.log('trwa sprawdzanie apartamentu')
-    this.apartmentService.getLoggedApartment(window.sessionStorage.getItem('username')).subscribe(apartments =>
-      apartments.forEach(apartment => {
-        this.billService.getBills(apartment.id).subscribe(response => {
-          this.dataSource = new MatTableDataSource(response);
-        });
-  }));
+    if (window.sessionStorage.getItem('currentRole') === 'ROLE_USER') {
+      console.log('userbils');
+      this.apartmentService.getLoggedApartment(window.sessionStorage.getItem('username')).subscribe(apartments =>
+        apartments.forEach(apartment => {
+          this.billService.getBills(apartment.id).subscribe(response => {
+            this.dataSource = new MatTableDataSource(response);
+          });
+        }));
+    } else {
+      console.log('allBils');
+      this.billService.getAllBills().subscribe(response => {
+        this.dataSource = new MatTableDataSource(response);
+      });
+    }
   }
 
   // Filtrowanie rekordów w tabeli

@@ -21,8 +21,6 @@ public class Bill {
     @ManyToOne(optional = false)
     private Apartment apartment;
 
-
-
     public boolean isConfirmed() { return confirmed; }
     public void setConfirmed(boolean confirmed) { this.confirmed = confirmed; }
     public String getDate() {

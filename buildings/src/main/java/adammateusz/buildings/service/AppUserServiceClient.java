@@ -16,8 +16,6 @@ public interface AppUserServiceClient{
     @GetMapping(value = "/appUser/{id}")
     Owner getAppUser(@PathVariable Long id);
 
-//    @GetMapping(value = "/appUser/loggedApartmentNumber")
-//    public long getLoggedAppUserApartmentNumber(@RequestHeader("X-Auth-Token") String token);
 
 
 }

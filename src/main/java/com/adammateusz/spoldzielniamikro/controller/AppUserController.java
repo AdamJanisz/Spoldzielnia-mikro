@@ -3,6 +3,7 @@ package com.adammateusz.spoldzielniamikro.controller;
 import com.adammateusz.spoldzielniamikro.domain.Apartment;
 import com.adammateusz.spoldzielniamikro.domain.AppUser;
 import com.adammateusz.spoldzielniamikro.domain.AppUserRole;
+import com.adammateusz.spoldzielniamikro.service.ApartmentServiceClient;
 import com.adammateusz.spoldzielniamikro.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,10 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import javax.validation.constraints.Null;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @RestController
@@ -27,6 +25,9 @@ public class AppUserController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    ApartmentServiceClient apartmentServiceClient;
 
     @PostMapping("/register")
     public AppUser createAppUser(@RequestBody AppUser appUser)
@@ -50,8 +51,34 @@ public class AppUserController {
 
 
     @GetMapping("/")
-   @RolesAllowed({"ROLE_ADMIN"})
-    public List<AppUser> getAppUsersLists() {
+   @RolesAllowed({"ROLE_ADMIN","ROLE_MANAGER"})
+    public List<AppUser> getAppUsersLists()
+    {
+        AppUser appUser=appUserService.findLoggedAppUser();
+        for(AppUserRole role: appUser.getAppUserRole())
+        {
+            if(role.getRole().equals("ROLE_MANAGER"))
+            {
+                List<Apartment> apartments=apartmentServiceClient.getApartments(appUser.getId());
+
+
+                List<AppUser> appUsersToManage=new ArrayList<>();
+                for(Apartment apartment: apartments)
+                {
+
+                    for(AppUser appUser1: appUserService.findByAparmentId(apartment.getId()))
+                  {
+                       appUsersToManage.add(appUser1);
+                   }
+
+                }
+                return appUsersToManage;
+            }
+
+
+        }
+
+
         return appUserService.listAppUser();
     }
     @GetMapping("/{id}")

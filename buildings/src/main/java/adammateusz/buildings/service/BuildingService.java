@@ -13,4 +13,5 @@ public interface BuildingService {
     void removeBuilding(long id);
     void addOwner(long buildingID,long appUserID);
 
+
 }
