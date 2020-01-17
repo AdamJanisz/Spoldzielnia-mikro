@@ -55,7 +55,7 @@
       <mat-label>Manager</mat-label>
       <mat-select formControlName="owner">
         <mat-option *ngFor="let student of students" [value]="student">
-          {{student.username}}
+          <span id="usernameSpan">{{student.username}} </span>
         </mat-option>
       </mat-select>
     </mat-form-field>

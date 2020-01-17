@@ -10,6 +10,7 @@ import java.util.Set;
 public interface AppUserRoleService {
 
     void addAppUserRole(AppUserRole appUserRole);
+    AppUserRole findByRole(String role);
 
     List<AppUserRole> listAppUserRole();
 

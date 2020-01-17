@@ -77,7 +77,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 		user.setEmail(appUser.getEmail());
 		user.setUsername(appUser.getUsername());
 		user.setPassword(appUser.getPassword());
-
+		user.setAppUserRole(appUser.getAppUserRole());
 		user.setApartment(appUser.getApartment());
         appUserRepository.save(user);
 	}

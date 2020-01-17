@@ -36,7 +36,6 @@ export class AddBuildingComponent implements OnInit {
       owner: [this.students, Validators.required],
     });
   }
-
   ngOnInit() {
     this.studentService.getStudents().subscribe(response => {
       this.students = response;
@@ -51,12 +50,15 @@ export class AddBuildingComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     }
+    this.studentService.makeUserManager(this.form.controls['owner'].value.username).subscribe(data =>{
+      this.toastr.success('Sukces!', 'Budynek dodany prawidłowo');
+    }, error1 => this.toastr.error('Błąd!', 'Budynek niedodany prawidłowo'));
     this.buildingService.saveBuilding(this.form.value).subscribe(
       data => {
-        this.toastr.success('Sukces!', 'Budynek dodany prawidłowo');
+        //this.toastr.success('Sukces!', 'Budynek dodany prawidłowo');
       },
       error => {
-        this.toastr.error('Błąd!', 'Budynek niedodany prawidłowo');
+        //this.toastr.error('Błąd!', 'Budynek niedodany prawidłowo');
         console.log('Coś poszło nie tak !', error);
       }
     );

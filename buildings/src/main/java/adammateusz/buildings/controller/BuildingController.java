@@ -60,10 +60,11 @@ public class BuildingController {
                 }
         }
 
+
+
         @GetMapping(value = "getOwnerAparments/{ownerId}")
         public List<Apartment> listOwnerApartments(@PathVariable long ownerId )
         {
-                System.out.println("im in building "+ownerId);
                 List<Building> buildings=buildingService.listManagerBuildings(ownerId);
 
                 List<Apartment> apartmentsInAboveBuilding=new ArrayList<>();

@@ -4,11 +4,15 @@ import com.adammateusz.spoldzielniamikro.domain.Apartment;
 import com.adammateusz.spoldzielniamikro.domain.AppUser;
 import com.adammateusz.spoldzielniamikro.domain.AppUserRole;
 import com.adammateusz.spoldzielniamikro.service.ApartmentServiceClient;
+import com.adammateusz.spoldzielniamikro.service.AppUserRoleService;
 import com.adammateusz.spoldzielniamikro.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.security.RolesAllowed;
 import javax.validation.constraints.Null;
@@ -22,6 +26,9 @@ public class AppUserController {
 
     @Autowired
     private AppUserService appUserService;
+
+    @Autowired
+    private AppUserRoleService appUserRoleService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -74,13 +81,21 @@ public class AppUserController {
                 }
                 return appUsersToManage;
             }
-
-
         }
-
 
         return appUserService.listAppUser();
     }
+
+    @PutMapping(value="/makeUserManager")
+    public void buildingAddOwner(@RequestBody String username){
+        AppUser appUser=appUserService.findByLogin(username);
+        appUser.setAppUserRole(Collections.emptySet());
+        Set<AppUserRole> appUserRoles=new HashSet<>();
+        appUserRoles.add(appUserRoleService.findByRole("ROLE_MANAGER"));
+        appUser.setAppUserRole(appUserRoles);
+        appUserService.editAppUser(appUser.getId(),appUser);
+    }
+
     @GetMapping("/{id}")
     public AppUser getAppUser(@PathVariable long id){
         return appUserService.getAppUser(id);

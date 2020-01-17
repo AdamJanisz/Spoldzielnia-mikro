@@ -21,6 +21,11 @@ public class AppUserRoleServiceImpl implements AppUserRoleService {
         appUserRoleRepository.save(appUserRole);
     }
 
+    @Override
+    public AppUserRole findByRole(String role) {
+        return appUserRoleRepository.findByRole(role);
+    }
+
     @Transactional
     public List<AppUserRole> listAppUserRole() {
         return appUserRoleRepository.findAll();

@@ -7,6 +7,7 @@ import {__param} from 'tslib';
 import {Params} from '@angular/router';
 import {AppUserRole} from '../models/AppUserRole';
 import {StudentsComponent} from "../students/students.component";
+import {Building} from "../models/building";
 
 // Zastosowanie serwisów jest ogromne. W naszym przypadku
 // zawiera logikę związaną z interakcją z zewnętrznym API.
@@ -20,6 +21,7 @@ export class StudentsService {
 
 //  API_URL_APARTMENT = environment.API_URL_APARTMENTS;
  API_URL_REGISTER = environment.API_URL_REGISTER;
+ API_URL_MAKEUSERMANAGER = environment.API_URL_MAKEUSERMANAGER;
   private currentUser: any;
 
   // W konstruktorze wstrzykiwany jest klient http
@@ -57,9 +59,16 @@ export class StudentsService {
 
   }
 
-
   updateCurrentUserRoles(username: string)  {
     return this.httpClient.get<AppUserRole[]>(this.API_URL_STUDENTS + 'getUser/' + username );
+  }
+
+  makeUserManager(studentUsername: string) {
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.put(this.API_URL_MAKEUSERMANAGER, studentUsername,{headers: reqHeader});
   }
 
 }
