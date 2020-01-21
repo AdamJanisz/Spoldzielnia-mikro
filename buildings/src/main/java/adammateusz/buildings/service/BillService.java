@@ -10,6 +10,7 @@ public interface BillService {
     public List<Bill> listApartmentBills(long apartmentId);
     public Bill addBill(Bill bill);
     public void editBill(Bill bills);
+    public Bill acceptBill(long bill);
     public Bill getBill(long id);
     public void removeBill(long id);
     public void updateBill(int coldWater,long id);

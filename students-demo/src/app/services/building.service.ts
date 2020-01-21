@@ -27,7 +27,7 @@ export class BuildingService {
     return this.httpClient.get<Building[]>(this.API_URL_BUILDING);
   }
   editBuilding(id : String) {
-    this.router.navigate(['editBuilding/',id])
+    this.router.navigate(['editBuilding/',id]);
   }
   saveBuilding(building : Building): Observable<Building> {
     return this.httpClient.post(this.API_URL_BUILDING,building);

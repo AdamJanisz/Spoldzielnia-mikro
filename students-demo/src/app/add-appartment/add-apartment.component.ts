@@ -20,7 +20,7 @@ export class AddApartmentComponent implements OnInit {
 
   form: FormGroup;
   buildings: Building[];
-  displayedColumns: string[] = ['city','street','buildingNumber','apartmentNumber'];
+  displayedColumns: string[] = ['city', 'street', 'buildingNumber', 'apartmentNumber'];
   dataSource;
 
   constructor(

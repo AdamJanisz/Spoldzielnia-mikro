@@ -50,6 +50,13 @@ public class BillServiceImpl implements BillService{
     }
 
     @Override
+    public Bill acceptBill(long bill) {
+        Bill oldBill = billRepository.findById(bill);
+        oldBill.setConfirmed(true);
+        return billRepository.save(oldBill);
+    }
+
+    @Override
     public Bill getBill(long id) {
         return billRepository.findById(id);
     }

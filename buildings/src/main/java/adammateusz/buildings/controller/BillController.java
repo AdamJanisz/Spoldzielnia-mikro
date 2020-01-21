@@ -3,6 +3,7 @@ package adammateusz.buildings.controller;
 import adammateusz.buildings.domain.Bill;
 import adammateusz.buildings.service.ApartmentService;
 import adammateusz.buildings.service.BillService;
+import adammateusz.buildings.service.EmailServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class BillController {
     private BillService billService;
     @Autowired
     private ApartmentService apartmentService;
+
+    @Autowired
+    private EmailServiceClient emailServiceClient;
 
     @GetMapping("/")
     public List<Bill> getBillsLists() {
@@ -39,6 +43,12 @@ public class BillController {
     }
     @PutMapping("/")
     public void editBill(@RequestBody Bill bill){ billService.editBill(bill); }
+    @GetMapping("/confirmation{bill}")
+    public Bill acceptBill(@PathVariable String bill){
+        System.out.println(bill);
+        emailServiceClient.sendEmail("clothesshoparmani@gmail.com");
+    return billService.acceptBill(Long.valueOf(bill)); }
+
     @RequestMapping(value = "/", method = RequestMethod.DELETE)
     public void deleteBill (@RequestParam long id){
         billService.removeBill(id);

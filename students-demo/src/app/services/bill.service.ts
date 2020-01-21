@@ -26,7 +26,7 @@ export class BillService {
   // Za pomocą httpClient odpytywany jest StudentService
 
   getBill(billId: String): Observable<Bill> {
-    return this.httpClient.get(this.API_URL_BILLS+billId);
+    return this.httpClient.get(this.API_URL_BILLS + billId);
   }
   getAllBills(): Observable<Bill[]> {
     return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
@@ -35,11 +35,21 @@ export class BillService {
     return this.httpClient.get<Bill[]>(this.API_URL_BILLS + 'appartment/' + appartmentId);
   }
   editBill(id : String) {
-    this.router.navigate(['editBill/',id]);
+    this.router.navigate(['editBill/', id]);
   }
 
   updateBill(bill: Bill): Observable<Bill> {
+    console.log(this.API_URL_BILLS + this.httpClient.put(this.API_URL_BILLS, bill));
     return this.httpClient.put(this.API_URL_BILLS, bill);
+  }
+  acceptBill(bill: Bill) {
+    console.log(this.API_URL_BILLS + 'confirmation' + bill.id + this.httpClient.get(this.API_URL_BILLS+ 'confirmation' + bill.id));
+   // this.httpClient.get(this.API_URL_BILLS+'confirmation'+bill.id);
+    this.router.navigate(['allBills/', bill.id]);
+  }
+  confirmBill(id: number): Observable<Bill> {
+    console.log('działa?');
+    return this.httpClient.get(this.API_URL_BILLS+'confirmation'+id);
   }
 
 

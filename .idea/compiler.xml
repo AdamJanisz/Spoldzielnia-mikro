@@ -6,14 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="buildings" />
-        <module name="eureka" />
         <module name="spoldzielniamikro" />
         <module name="zuul" />
+        <module name="eureka" />
+        <module name="email" />
+        <module name="buildings" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="buildings" target="1.8" />
+      <module name="email" target="1.8" />
       <module name="eureka" target="1.8" />
       <module name="spoldzielniamikro" target="1.8" />
       <module name="zuul" target="1.8" />
@@ -22,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="buildings" options="-parameters" />
+      <module name="email" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="spoldzielniamikro" options="-parameters" />
       <module name="zuul" options="-parameters" />
