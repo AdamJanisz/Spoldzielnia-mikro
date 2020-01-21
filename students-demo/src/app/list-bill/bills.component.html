@@ -49,7 +49,13 @@
       <mat-header-cell  *matHeaderCellDef >Akcja</mat-header-cell>
       <mat-cell *matCellDef="let bill" >
         <button mat-button type="" (click)=" billService.editBill(bill.id)" >Edytuj</button>
+      </mat-cell>
+    </ng-container>
 
+    <ng-container matColumnDef="accept">
+      <mat-header-cell  *matHeaderCellDef >Zatwierdź</mat-header-cell>
+      <mat-cell *matCellDef="let bill" >
+        <button mat-button type="" (click)=" billService.acceptBill(bill)" >Potwierdź</button>
       </mat-cell>
     </ng-container>
 

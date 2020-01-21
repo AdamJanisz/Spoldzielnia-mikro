@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'students', component: StudentsComponent },
   { path: 'enrolment', component: AddStudentComponent },
   { path: 'editBill/:id',component: AddBillComponent},
-  { path: 'allBills',component: BillsComponent},
+  { path: 'allBills/:id',component: BillsComponent},
   { path: 'allBuildings',component: BuildingsComponent},
   { path: 'addAppartment',component: AddApartmentComponent},
   { path: 'addBuilding',component: AddBuildingComponent},

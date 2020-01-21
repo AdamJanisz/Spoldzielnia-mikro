@@ -1,23 +1,32 @@
-package com.example.email.service;
+package adammateusz.buildings.service;
 
 
+import adammateusz.buildings.domain.Bill;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.Document;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 @Service
 public class PdfServiceImpl implements PdfService {
 
-/*    @Override
-    public void generatePdf(Bills bill, HttpServletResponse response) {
+    @Autowired
+    BillService billService;
+
+    @Override
+    public void generatePdf(Bill bill, HttpServletResponse response) {
         try {
             OutputStream o  = response.getOutputStream();
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", "inline; filename=" + bill.getAppUser().getLogin()+bill.getDate()+ ".pdf");
+            response.setHeader("Content-Disposition", "inline; filename=" + bill.getApartment().getApartmentAddress().getOwner().getUsername()+bill.getDate()+ ".pdf");
             Document pdf = new Document();
             PdfWriter.getInstance(pdf, o);
             pdf.open();
@@ -26,10 +35,9 @@ public class PdfServiceImpl implements PdfService {
             PdfPTable table = new PdfPTable(2);
             table.addCell("Date");
             table.addCell(bill.getDate());
-            table.addCell("First name");
-            table.addCell(bill.getAppUser().getFirstName());
-            table.addCell("Last name");
-            table.addCell(bill.getAppUser().getLastName());
+            table.addCell("Issuer of the Invoice");
+            table.addCell(bill.getApartment().getApartmentAddress().getOwner().getUsername());
+
             table.addCell("Used cold water");
             table.addCell(bill.getColdWater() + " [m^3]");
             table.addCell("Used hot water");
@@ -46,5 +54,6 @@ public class PdfServiceImpl implements PdfService {
         } catch (IOException | DocumentException e) {
             e.printStackTrace();
         }
-    }*/
+    }
+
 }

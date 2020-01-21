@@ -42,7 +42,7 @@ export class AddBillComponent implements OnInit {
     this.route.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
 
-      this.billService.getBill(id.toString()).forEach(value => this.newBillForm.setControl('id', new FormControl(value.id)));
+      this.billService.getBill(id.toString()).forEach(value => this.newBillForm.setControl('id', new FormControl(value.id)) );
       this.billService.getBill(id.toString()).forEach(value => this.newBillForm.setControl('electricity', new FormControl(value.electricity)));
       this.billService.getBill(id.toString()).forEach(value => this.newBillForm.setControl('hotWater', new FormControl(value.hotWater)));
       this.billService.getBill(id.toString()).forEach(value => this.newBillForm.setControl('coldWater', new FormControl(value.coldWater)));
