@@ -6,6 +6,7 @@ import { Bill } from '../models/bill';
 import { environment } from '../../environments/environment';
 import {__param} from "tslib";
 import {ActivatedRoute, Params, Route, Router} from "@angular/router";
+import {Building} from "../models/building";
 
 
 // Zastosowanie serwisów jest ogromne. W naszym przypadku
@@ -29,10 +30,19 @@ export class BillService {
     return this.httpClient.get(this.API_URL_BILLS + billId);
   }
   getAllBills(): Observable<Bill[]> {
-    return this.httpClient.get<Bill[]>(this.API_URL_BILLS);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS,{headers: reqHeader});
   }
+
   getBills(appartmentId: number): Observable<Bill[]> {
-    return this.httpClient.get<Bill[]>(this.API_URL_BILLS + 'appartment/' + appartmentId);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS + 'appartment/' + appartmentId,{headers: reqHeader});
   }
   editBill(id : String) {
     this.router.navigate(['editBill/', id]);
@@ -49,7 +59,11 @@ export class BillService {
   }
   confirmBill(id: number): Observable<Bill> {
     console.log('działa?');
-    return this.httpClient.get(this.API_URL_BILLS+'confirmation'+id);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get(this.API_URL_BILLS+'confirmation'+id,{headers: reqHeader});
   }
 
 

@@ -3,6 +3,7 @@ package com.example.email.controller;
 import com.example.email.service.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,13 +28,14 @@ public class EmailController {
     }
 
     @GetMapping("/{emailAddress}")
-    public void send(@PathVariable String emailAddress) {
+    public ResponseEntity<String> send(@PathVariable String emailAddress) {
         Context context = new Context();
         context.setVariable("header", "FAKTURA");
         context.setVariable("title", " Nowy rachunek dostępny na platformie twojej Społdzielni Mieszkaniowej");
         context.setVariable("description", "Kliknij aby zapłacić");
         String body = templateEngine.process("message", context);
         emailSender.sendEmail(emailAddress, "Nowa FAKTURA", body);
+        return ResponseEntity.ok("wiadomosc wyslana");
 
     }
 
