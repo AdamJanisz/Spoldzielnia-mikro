@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class BuildingController {
         private AppUserServiceClient appUserServiceClient;
 
         @GetMapping("/")
+        @RolesAllowed({"ROLE_ADMIN"})
         public List<Building> getBuildingLists() {return buildingService.findAll(); }
         @GetMapping("/{id}")
         public Building getBuilding(@PathVariable long id){

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {Building} from "../models/building";
@@ -24,7 +24,11 @@ export class BuildingService {
     return this.httpClient.get(this.API_URL_BUILDING+id);
   }
   getBuildings(): Observable<Building[]> {
-    return this.httpClient.get<Building[]>(this.API_URL_BUILDING);
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get<Building[]>(this.API_URL_BUILDING,{headers: reqHeader});
   }
   editBuilding(id : String) {
     this.router.navigate(['editBuilding/',id]);

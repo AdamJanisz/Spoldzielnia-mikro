@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,11 +24,12 @@ public class BillController {
     @Autowired
     private EmailServiceClient emailServiceClient;
 
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MANAGER"})
     @GetMapping("/")
     public List<Bill> getBillsLists() {
-
-
         return billService.getAllBills(); }
+
+
     @GetMapping("/{id}")
     public Bill getBill(@PathVariable long id){
         return billService.getBill(id);
@@ -35,6 +37,7 @@ public class BillController {
     @GetMapping("/appartment/{id}")
     public List<Bill> getApartmentBills(@PathVariable long id){
         System.out.println("aparment id"+id);
+        System.out.println(billService.listApartmentBills(id).size());
         return billService.listApartmentBills(id); }
     @PostMapping("/")
     public Bill createNewBill(@RequestBody Bill bill){
