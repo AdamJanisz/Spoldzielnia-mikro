@@ -29,6 +29,15 @@ export class BillService {
   getBill(billId: String): Observable<Bill> {
     return this.httpClient.get(this.API_URL_BILLS + billId);
   }
+
+  getAllBillsForManager(username: string): Observable<Bill[]> {
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + JSON.parse(window.sessionStorage.getItem('token')).access_token
+    });
+    return this.httpClient.get<Bill[]>(this.API_URL_BILLS + 'managerName/' + username, {headers: reqHeader});
+
+  }
   getAllBills(): Observable<Bill[]> {
     const reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',

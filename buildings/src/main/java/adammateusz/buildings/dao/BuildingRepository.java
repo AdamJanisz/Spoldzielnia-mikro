@@ -15,4 +15,5 @@ public interface BuildingRepository extends JpaRepository<Building,Long> {
    Optional<Building> findById(long id);
    Building findByIdOrderById(long id);
    List<Building> findAllByOwner_IdOrderByCityAsc(long id);
+   List<Building> findAllByOwner_Username(String username);
 }

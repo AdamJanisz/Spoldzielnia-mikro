@@ -9,6 +9,7 @@ public interface BuildingService {
     Building findById(long id);
     Building addBuilding(Building building);
     List <Building> listManagerBuildings(long id);
+    List <Building> listManagerBuildingsByUsername(String username);
     Building editBuilding(Building building);
     void removeBuilding(long id);
     void addOwner(long buildingID,long appUserID);

@@ -11,5 +11,4 @@ export interface Building{
   sewagePrice?: string;
   maintenanceFundPrice?: string;
   owner?: Student;
-
 }

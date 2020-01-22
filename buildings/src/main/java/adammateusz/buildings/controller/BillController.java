@@ -1,15 +1,20 @@
 package adammateusz.buildings.controller;
 
+import adammateusz.buildings.domain.Apartment;
 import adammateusz.buildings.domain.Bill;
+import adammateusz.buildings.domain.Building;
 import adammateusz.buildings.service.ApartmentService;
 import adammateusz.buildings.service.BillService;
+import adammateusz.buildings.service.BuildingService;
 import adammateusz.buildings.service.EmailServiceClient;
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +28,9 @@ public class BillController {
 
     @Autowired
     private EmailServiceClient emailServiceClient;
+
+    @Autowired
+    BuildingService buildingService;
 
     @RolesAllowed({"ROLE_ADMIN","ROLE_MANAGER"})
     @GetMapping("/")
@@ -44,6 +52,26 @@ public class BillController {
         bill.setTotalAmount();
         return billService.addBill(bill);
     }
+
+    @RolesAllowed({"ROLE_MANAGER"})
+    @GetMapping("/managerName/{username}")
+    public List<Bill> getBillsForManager(@PathVariable String username)
+    {
+        List<Building> managerBuilding=buildingService.listManagerBuildingsByUsername(username);
+        List<Bill> managerBills=new ArrayList<>();
+        for(Building b:managerBuilding)
+        {
+            for(Apartment a: b.getApartmentList())
+            {
+                for(Bill bill: a.getBillList())
+                managerBills.add(bill);
+            }
+
+        }
+        return managerBills;
+    }
+
+
     @PutMapping("/")
     public void editBill(@RequestBody Bill bill){ billService.editBill(bill); }
     @GetMapping("/confirmation{bill}")

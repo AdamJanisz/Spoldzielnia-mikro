@@ -39,10 +39,16 @@ public class BuildingServiceImpl implements BuildingService {
         return buildingRepository.save(building);
     }
 
-    @Transactional
+    @Override
     public List<Building> listManagerBuildings(long id) {
         return buildingRepository.findAllByOwner_IdOrderByCityAsc(id);
     }
+
+    @Override
+    public List<Building> listManagerBuildingsByUsername(String username) {
+        return buildingRepository.findAllByOwner_Username(username);
+    }
+
 
     @Transactional
     public Building editBuilding(Building building) {

@@ -23,7 +23,6 @@ import java.util.*;
 @RequestMapping("appUser")
 public class AppUserController {
 
-
     @Autowired
     private AppUserService appUserService;
 

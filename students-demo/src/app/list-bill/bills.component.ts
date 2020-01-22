@@ -6,7 +6,6 @@ import {ActivatedRoute} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 
 
-
 @Component({
   selector: 'app-bills',
   templateUrl: './bills.component.html',
@@ -22,8 +21,6 @@ export class BillsComponent implements OnInit {
   }
 
 
-
-
   // Podczas inicjalizacji komponentu wywoływana jest metoda z students.service odpytująca GatewayService
   // Następnie lista studentów otrzymana z GatewayService jest ładowana do tabeli MatTableDataSource
   // Korzystając z komponentów Angular Material dostajemy za darmo często używane funkcjonalności takie jak filtrowanie, sortowanie itp.
@@ -31,12 +28,14 @@ export class BillsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
-      if ( id > 0) { this.billService.confirmBill(id).subscribe(data => {
-          this.toastr.success('Sukces!', 'Rachunek został potwierdzony');
-        },
-        error => {
-          this.toastr.error('Błąd!', 'Rachunek nie został potwierdzony');
-        }); }
+      if (id > 0) {
+        this.billService.confirmBill(id).subscribe(data => {
+            this.toastr.success('Sukces!', 'Rachunek został potwierdzony');
+          },
+          error => {
+            this.toastr.error('Błąd!', 'Rachunek nie został potwierdzony');
+          });
+      }
     });
     if (window.sessionStorage.getItem('currentRole') === 'ROLE_USER') {
       console.log('userbils');
@@ -46,6 +45,12 @@ export class BillsComponent implements OnInit {
             this.dataSource = new MatTableDataSource(response);
           });
         }));
+    } else if (window.sessionStorage.getItem('currentRole') === 'ROLE_MANAGER') {
+      console.log('manager');
+      this.billService.getAllBillsForManager(window.sessionStorage.getItem('username')).subscribe(response => {
+        this.dataSource = new MatTableDataSource(response);
+      });
+
     } else {
       console.log('allBils');
       this.billService.getAllBills().subscribe(response => {
