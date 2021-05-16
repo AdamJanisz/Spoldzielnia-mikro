@@ -74,6 +74,8 @@ public class BillController {
 
     @PutMapping("/")
     public void editBill(@RequestBody Bill bill){ billService.editBill(bill); }
+
+    @RolesAllowed({"ROLE_MANAGER","ROLE_ADMIN"})
     @GetMapping("/confirmation{bill}")
     public Bill acceptBill(@PathVariable String bill){
         System.out.println(bill);
